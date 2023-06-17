@@ -25,7 +25,7 @@ const CitizenRequestView = require("./citizen-request-view");
 const CitizenRequestViewMgr = require("./citizen-request-view-mgr");
 const TextureLoader = require("./texture-loader");
 const CarSpawner = require("./cars/car-spawner");
-const TrafficData = require("./data-sources/traffic-data");
+//const TrafficData = require("./data-sources/traffic-data");
 const RoadSafetyData = require("./data-sources/road-safety-data");
 const PowerUpInspector = require("./power-up-inspector");
 const PowerUpManager = require("./power-up-manager");
@@ -75,7 +75,7 @@ cfgLoader
     //stats.registerSource(new NoiseData(city, config));
     stats.registerSource(new GreenSpacesData(city, config));
     stats.registerSource(new TravelTimesData(city, config));
-    stats.registerSource(new TrafficData(city, config));
+    //stats.registerSource(new TrafficData(city, config));
     stats.registerSource(new RoadSafetyData(city, config));
     city.map.events.on("update", () => {
       stats.calculateAll();
@@ -242,7 +242,7 @@ cfgLoader
         // Todo: Remove the lines below
         $('[data-component="status"]').append(variableRankListView.$element);
         variableRankListView.setValues({
-          "traffic-density": 0,
+          //"traffic-density": 0,
           "travel-times": 0,
           safety: 0,
           //pollution: 0,
@@ -268,7 +268,7 @@ cfgLoader
               //pollution: stats.get("pollution-index"),
               //noise: stats.get("noise-index"),
               "travel-times": stats.get("travel-times-index"),
-              "traffic-density": stats.get("traffic-density-index"),
+              //"traffic-density": stats.get("traffic-density-index"),
               safety: stats.get("road-safety-index"),
             });
             goalDebugView.setValues(stats.getGoals());

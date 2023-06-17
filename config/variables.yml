@@ -1,8 +1,8 @@
 variables:
-  traffic-density:
-    name:
-      de: Verkehrsdichte
-      en: Traffic Density
+  #traffic-density:
+  #name:
+  #de: Verkehrsdichte
+  #en: Traffic Density
   travel-times:
     name:
       de: Fahrzeiten

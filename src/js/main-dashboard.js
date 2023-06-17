@@ -40,7 +40,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
       .append(createTitle(config.dashboard.status.title))
       .append(variableRankListView.$element);
     variableRankListView.setValues({
-      "traffic-density": 0,
+      //"traffic-density": 0,
       "travel-times": 0,
       safety: 0,
       //pollution: 0,

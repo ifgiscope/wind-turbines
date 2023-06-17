@@ -12,7 +12,7 @@ const ZoneBalanceData = require("../src/js/data-sources/zone-balance-data");
 //const NoiseData = require('../src/js/data-sources/noise-data');
 const GreenSpacesData = require("../src/js/data-sources/green-spaces-data");
 const TravelTimesData = require("../src/js/data-sources/travel-times-data");
-const TrafficData = require("../src/js/data-sources/traffic-data");
+//const TrafficData = require("../src/js/data-sources/traffic-data");
 const RoadSafetyData = require("../src/js/data-sources/road-safety-data");
 const PowerUpManager = require("../src/js/power-up-manager");
 const PowerUpDataModifier = require("../src/js/power-up-data-modifier");
@@ -29,7 +29,7 @@ function initApp(config) {
   //stats.registerSource(new NoiseData(city, config));
   stats.registerSource(new GreenSpacesData(city, config));
   stats.registerSource(new TravelTimesData(city, config));
-  stats.registerSource(new TrafficData(city, config));
+  //stats.registerSource(new TrafficData(city, config));
   stats.registerSource(new RoadSafetyData(city, config));
   city.map.events.on("update", () => {
     stats.throttledCalculateAll();
@@ -93,7 +93,7 @@ function initApp(config) {
           //pollution: stats.get('pollution-index'),
           //noise: stats.get('noise-index'),
           "travel-times": stats.get("travel-times-index"),
-          "traffic-density": stats.get("traffic-density-index"),
+          //"traffic-density": stats.get("traffic-density-index"),
           safety: stats.get("road-safety-index"),
         },
       })
