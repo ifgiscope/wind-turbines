@@ -3,10 +3,10 @@ variables:
   #name:
   #de: Verkehrsdichte
   #en: Traffic Density
-  travel-times:
-    name:
-      de: Fahrzeiten
-      en: Travel times
+  #travel-times:
+  #name:
+  #de: Fahrzeiten
+  #en: Travel times
   safety:
     name:
       de: Verkehrssicherheit

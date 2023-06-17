@@ -16,7 +16,7 @@ const VariableRankListView = require("./index-list-view");
 //const PollutionData = require("./data-sources/pollution-data");
 //const NoiseData = require("./data-sources/noise-data");
 const GreenSpacesData = require("./data-sources/green-spaces-data");
-const TravelTimesData = require("./data-sources/travel-times-data");
+//const TravelTimesData = require("./data-sources/travel-times-data");
 const ZoningData = require("./data-sources/zoning-data");
 const ZoneBalanceData = require("./data-sources/zone-balance-data");
 const GoalDebugView = require("./goal-debug-view");
@@ -75,7 +75,7 @@ cfgLoader
     //stats.registerSource(new PollutionData(city, config));
     //stats.registerSource(new NoiseData(city, config));
     stats.registerSource(new GreenSpacesData(city, config));
-    stats.registerSource(new TravelTimesData(city, config));
+    //stats.registerSource(new TravelTimesData(city, config));
     //stats.registerSource(new TrafficData(city, config));
     stats.registerSource(new RoadSafetyData(city, config));
     city.map.events.on("update", () => {
@@ -162,7 +162,7 @@ cfgLoader
         );
 
         const variables = {
-          "Travel times": "travel-times",
+          //"Travel times": "travel-times",
           "Green space prox.": "green-spaces-proximity",
           "Green space areas": "green-spaces-areas",
           //"Pollution (all)": "pollution",
@@ -217,7 +217,7 @@ cfgLoader
         $('[data-component="status"]').append(variableRankListView.$element);
         variableRankListView.setValues({
           //"traffic-density": 0,
-          "travel-times": 0,
+          //"travel-times": 0,
           safety: 0,
           //pollution: 0,
           //noise: 0,
@@ -241,7 +241,7 @@ cfgLoader
               "green-spaces": stats.get("green-spaces-index"),
               //pollution: stats.get("pollution-index"),
               //noise: stats.get("noise-index"),
-              "travel-times": stats.get("travel-times-index"),
+              //"travel-times": stats.get("travel-times-index"),
               //"traffic-density": stats.get("traffic-density-index"),
               safety: stats.get("road-safety-index"),
             });

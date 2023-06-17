@@ -1,4 +1,4 @@
-const DataSource = require("../data-source");
+/*const DataSource = require("../data-source");
 const { getTileTypeId } = require("../lib/config-helpers");
 const Array2D = require("../lib/array-2d");
 const TravelTimeCalculator = require("../lib/travel-times");
@@ -42,8 +42,8 @@ class TravelTimesData extends DataSource {
     Array2D.zip(data, this.city.map.cells, (value, tile) => {
       if (
         value !== 0 &&
-        tile === this.residentialId /*|| tile === this.commercialId ||
-          tile === this.industrialId*/
+        tile === this.residentialId || tile === this.commercialId ||
+          tile === this.industrialId
       ) {
         answer.push(value);
       }
@@ -56,8 +56,8 @@ class TravelTimesData extends DataSource {
     this.data = [];
     this.city.map.allCells().forEach(([x, y, tile]) => {
       if (
-        tile === this.residentialId /*|| tile === this.commercialId ||
-        tile === this.industrialId*/
+        tile === this.residentialId || tile === this.commercialId ||
+        tile === this.industrialId
       ) {
         this.data.push(...this.timesFrom(x, y));
       }
@@ -105,3 +105,4 @@ class TravelTimesData extends DataSource {
 }
 
 module.exports = TravelTimesData;
+*/

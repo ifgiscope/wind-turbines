@@ -11,7 +11,7 @@ const MapTextOverlay = require("../map-text-overlay");
 const { getTileTypeId } = require("../lib/config-helpers");
 const Array2D = require("../lib/array-2d");
 const VariableMapOverlay = require("../variable-map-overlay");
-const TravelTimeCalculator = require("../lib/travel-times");
+//const TravelTimeCalculator = require("../lib/travel-times");
 
 class MapEditor {
   constructor($element, city, config, textures, dataManager) {
@@ -27,7 +27,7 @@ class MapEditor {
     this.textOverlay = new MapTextOverlay(this.mapView);
 
     this.variableMapOverlay = new VariableMapOverlay(this.mapView, this.config);
-    this.travelTimeCalculator = new TravelTimeCalculator(this.config);
+    //this.travelTimeCalculator = new TravelTimeCalculator(this.config);
 
     this.palette = new MapEditorPalette(
       $("<div></div>").appendTo(this.$element),
@@ -134,10 +134,10 @@ class MapEditor {
           this.textOverlay.hide();
         },
         action: ([startX, startY]) => {
-          const data = this.travelTimeCalculator.travelTimes(
+          /*const data = this.travelTimeCalculator.travelTimes(
             this.mapView.city.map,
             [startX, startY]
-          );
+          );*/
           this.textOverlay.display(data);
 
           const residentalId = getTileTypeId(config, "residential");

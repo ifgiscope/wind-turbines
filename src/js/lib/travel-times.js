@@ -1,3 +1,4 @@
+/*
 const FlatQueue = require("./flatqueue");
 const Array2D = require("./array-2d");
 const { getTileTypeId } = require(".//config-helpers");
@@ -14,20 +15,20 @@ class TravelTimeCalculator {
     //this.emptyId = getTileTypeId(this.config, 'empty');
     this.roadId = getTileTypeId(this.config, "road");
     this.waterId = getTileTypeId(this.config, "water");
-  }
+  }*/
 
-  /**
-   * Given a city map and a starting point it returns the travel time to all other cells.
-   *
-   * Uses [Uniform Cost Search](https://www.redblobgames.com/pathfinding/a-star/introduction.html),
-   * a variation on Dijkstra's algorithm.
-   *
-   * @param {Grid} map
-   * @param {number} startX
-   * @param {number} startY
-   * @return {number[][]}
-   */
-  travelTimes(map, [startX, startY]) {
+/**
+ * Given a city map and a starting point it returns the travel time to all other cells.
+ *
+ * Uses [Uniform Cost Search](https://www.redblobgames.com/pathfinding/a-star/introduction.html),
+ * a variation on Dijkstra's algorithm.
+ *
+ * @param {Grid} map
+ * @param {number} startX
+ * @param {number} startY
+ * @return {number[][]}
+ */
+/*travelTimes(map, [startX, startY]) {
     const answer = Array2D.create(map.width, map.height, null);
     const frontier = new FlatQueue();
     frontier.push([startX, startY, map.get(startX, startY)], 0);
@@ -47,23 +48,23 @@ class TravelTimeCalculator {
     }
 
     return answer;
-  }
+  }*/
 
-  /**
-   * Returns the travel time between two tiles based on their types.
-   *
-   * @param tileTypeFrom
-   * @param tileTypeTo
-   * @return {Number}
-   */
-  timeBetweenTiles(tileTypeFrom, tileTypeTo) {
+/**
+ * Returns the travel time between two tiles based on their types.
+ *
+ * @param tileTypeFrom
+ * @param tileTypeTo
+ * @return {Number}
+ */
+/*timeBetweenTiles(tileTypeFrom, tileTypeTo) {
     if (tileTypeFrom === this.roadId && tileTypeTo === this.roadId) {
       return this.roadTileTime;
     }
     if (
       tileTypeFrom === this.waterId ||
       tileTypeTo === this.waterId
-      /*|| tileTypeFrom === this.emptyId || tileTypeTo === this.emptyId*/
+      || tileTypeFrom === this.emptyId || tileTypeTo === this.emptyId
     ) {
       return this.slowTileTime;
     }
@@ -72,3 +73,4 @@ class TravelTimeCalculator {
 }
 
 module.exports = TravelTimeCalculator;
+*/
