@@ -14,7 +14,7 @@ const ZoneBalanceView = require("./zone-balance-view");
 const DataInspectorView = require("./data-inspector-view");
 const VariableRankListView = require("./index-list-view");
 //const PollutionData = require("./data-sources/pollution-data");
-const NoiseData = require("./data-sources/noise-data");
+//const NoiseData = require("./data-sources/noise-data");
 const GreenSpacesData = require("./data-sources/green-spaces-data");
 const TravelTimesData = require("./data-sources/travel-times-data");
 const ZoningData = require("./data-sources/zoning-data");
@@ -72,7 +72,7 @@ cfgLoader
     stats.registerSource(new ZoningData(city, config));
     stats.registerSource(new ZoneBalanceData(city, config));
     //stats.registerSource(new PollutionData(city, config));
-    stats.registerSource(new NoiseData(city, config));
+    //stats.registerSource(new NoiseData(city, config));
     stats.registerSource(new GreenSpacesData(city, config));
     stats.registerSource(new TravelTimesData(city, config));
     stats.registerSource(new TrafficData(city, config));
@@ -147,7 +147,7 @@ cfgLoader
           true
         );
 
-        const emissionsVarViewer = new VariableMapView(
+        /*const emissionsVarViewer = new VariableMapView(
           city.map.width,
           city.map.height,
           0x8f2500
@@ -167,12 +167,12 @@ cfgLoader
         noiseVarViewer.displayObject.width = 960;
         noiseVarViewer.displayObject.height = 960;
         noiseVarViewer.displayObject.x = 1920 + 40;
-        noiseVarViewer.displayObject.y = 960;
+        noiseVarViewer.displayObject.y = 960;*/
 
-        stats.events.on("update", () => {
-          //emissionsVarViewer.update(stats.get("pollution-map"));
+        /*stats.events.on("update", () => {
+          emissionsVarViewer.update(stats.get("pollution-map"));
           noiseVarViewer.update(stats.get("noise-map"));
-        });
+        });*/
 
         const counterView = new TileCounterView(stats, config);
         const zoneBalanceView = new ZoneBalanceView(stats, config);
@@ -193,8 +193,8 @@ cfgLoader
           "Green space areas": "green-spaces-areas",
           //"Pollution (all)": "pollution",
           //"Pollution (resid.)": "pollution-residential",
-          "Noise (all)": "noise",
-          "Noise (resid.)": "noise-residential",
+          //"Noise (all)": "noise",
+          //"Noise (resid.)": "noise-residential",
         };
 
         const varSelector = $("<select></select>")
@@ -246,7 +246,7 @@ cfgLoader
           "travel-times": 0,
           safety: 0,
           //pollution: 0,
-          noise: 0,
+          //noise: 0,
           "green-spaces": 0,
         });
         window.variableRankListView = variableRankListView;
@@ -266,7 +266,7 @@ cfgLoader
             variableRankListView.setValues({
               "green-spaces": stats.get("green-spaces-index"),
               //pollution: stats.get("pollution-index"),
-              noise: stats.get("noise-index"),
+              //noise: stats.get("noise-index"),
               "travel-times": stats.get("travel-times-index"),
               "traffic-density": stats.get("traffic-density-index"),
               safety: stats.get("road-safety-index"),

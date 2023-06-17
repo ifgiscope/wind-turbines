@@ -5,7 +5,7 @@ const ServerSocketConnector = require("./server-socket-connector");
 const ConnectionStateView = require("./connection-state-view");
 const CitizenRequestView = require("./citizen-request-view");
 const CitizenRequestViewMgr = require("./citizen-request-view-mgr");
-const ActionsPane = require("./dashboard/actions-pane");
+//const ActionsPane = require("./dashboard/actions-pane");
 const { createTitle } = require("./dashboard/titles");
 const PowerUpSelector = require("./dashboard/power-up-selector");
 
@@ -44,18 +44,18 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
       "travel-times": 0,
       safety: 0,
       //pollution: 0,
-      noise: 0,
+      //noise: 0,
       "green-spaces": 0,
     });
 
     $("#col-3").append(createTitle(config.dashboard.powerUps.title));
 
-    const actionsPane = new ActionsPane(config);
+    /*const actionsPane = new ActionsPane(config);
     $("#col-actions").append(actionsPane.$element);
     actionsPane.buttons.forEach(($button) =>
       $button.on("click", (ev) => {
         const actionId = ev.currentTarget.id;
-        if (/*actionId === 'show-pollution' || */ actionId === "show-noise") {
+        if (actionId === 'show-pollution' ||  actionId === "show-noise") {
           actionsPane.disableAll();
 
           setTimeout(() => {
@@ -66,7 +66,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
         }
         ev.stopPropagation();
       })
-    );
+    );*/
 
     const powerUpSelector = new PowerUpSelector(
       config,
@@ -94,7 +94,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
       connector.getVars();
       connector.getGoals();
       connector.getActivePowerUps();
-      actionsPane.enableAll();
+      //actionsPane.enableAll();
     });
 
     const connStateView = new ConnectionStateView(connector);

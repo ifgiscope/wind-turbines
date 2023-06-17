@@ -27,7 +27,7 @@ dashboard:
       #text:
       #de: "<span class='large'>Luftverschmutzung</span><br>anzeigen"
       #en: "Show pollution"
-      - id: show-noise
-        text:
-          de: "<span class='large'>Lärmbelastung</span><br>anzeigen"
-          en: "Show noise"
+      #- id: show-noise
+      #text:
+      #de: "<span class='large'>Lärmbelastung</span><br>anzeigen"
+      #en: "Show noise"

@@ -15,10 +15,10 @@ variables:
   #name:
   #de: Luftverschmutzung
   #en: Pollution level
-  noise:
-    name:
-      de: Lärmbelastung
-      en: Noise level
+  #noise:
+  #name:
+  #de: Lärmbelastung
+  #en: Noise level
   green-spaces:
     name:
       de: Freifläche

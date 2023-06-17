@@ -173,7 +173,7 @@ class MapEditor {
         },
         action: () => {},
       },*/
-      showNoise: {
+      /*showNoise: {
         start: () => {
           this.mapView.setInspectCursor();
           this.variableMapOverlay.show(
@@ -185,7 +185,7 @@ class MapEditor {
           this.variableMapOverlay.hide();
         },
         action: () => {},
-      },
+      },*/
     };
   }
 
