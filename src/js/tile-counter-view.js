@@ -1,4 +1,4 @@
-/*class TileCounterView {
+class TileCounterView {
   constructor(stats, config) {
     this.stats = stats;
     this.config = config;
@@ -7,7 +7,7 @@
 
     this.$element = $("<div></div>").addClass("tile-counter");
 
-    this.computedFieldDefs = [
+    /*this.computedFieldDefs = [
       {
         id: "road-density",
         label: "Road:Zone ratio",
@@ -32,7 +32,7 @@
           ).toFixed(1)}%)`;
         },
       },
-    ];
+    ];*/
 
     this.fields = Object.assign(
       Object.fromEntries(
@@ -40,13 +40,13 @@
           id,
           $("<span></span>").addClass("field"),
         ])
-      ),
-      Object.fromEntries(
+      )
+      /*Object.fromEntries(
         this.computedFieldDefs.map((field) => [
           field.id,
           $("<span></span>").addClass("field"),
         ])
-      )
+      )*/
     );
 
     this.$element.append(
@@ -69,7 +69,7 @@
               .append(this.fields[id])
           )
         )
-        .append(
+      /*.append(
           this.computedFieldDefs.map((field) =>
             $("<li></li>")
               .append(
@@ -77,7 +77,7 @@
               )
               .append(this.fields[field.id])
           )
-        )
+        )*/
     );
 
     this.total = this.stats.get("zones-total");
@@ -94,12 +94,12 @@
       );
     });
 
-    this.computedFieldDefs.forEach(({ id, calculate }) => {
+    /*this.computedFieldDefs.forEach(({ id, calculate }) => {
       this.fields[id].text(calculate());
-    });
+    });*/
   }
 
-  extraFieldDefs() {
+  /*extraFieldDefs() {
     return [
       {
         id: "road-density",
@@ -113,8 +113,7 @@
         },
       },
     ];
-  }
+  }*/
 }
 
 module.exports = TileCounterView;
-*/

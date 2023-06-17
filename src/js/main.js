@@ -5,7 +5,7 @@ const CfgLoader = require("./cfg-loader");
 const City = require("./city");
 const MapEditor = require("./editor/map-editor");
 const CarOverlay = require("./cars/car-overlay");
-//const TileCounterView = require("./tile-counter-view");
+const TileCounterView = require("./tile-counter-view");
 const TestScenarios = require("./test/scenarios");
 const showFatalError = require("./lib/show-fatal-error");
 require("../sass/default.scss");
@@ -148,10 +148,10 @@ cfgLoader
           true
         );
 
-        //const counterView = new TileCounterView(stats, config);
+        const counterView = new TileCounterView(stats, config);
         const zoneBalanceView = new ZoneBalanceView(stats, config);
         $("[data-component=counters]").append([
-          //counterView.$element,
+          counterView.$element,
           zoneBalanceView.$element,
         ]);
 
