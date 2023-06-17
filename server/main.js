@@ -21,13 +21,14 @@ const cfgLoader = new CfgLoader(CfgReaderFile, yaml.load);
 cfgLoader
   .load([
     "../config/city.yml",
-    "../config/WT_tiles.yml",
-    "../config/WT_variables.yml",
-    "../config/WT_goals.yml",
-    "../config/WT_citizen-requests.yml",
+    "../config/tiles.yml",
+    "../config/variables.yml",
+    "../config/goals.yml",
+    "../config/citizen-requests.yml",
     "../config/dashboard.yml",
     "../config/traffic.yml",
     "../config/cars.yml",
+    "../config/power-ups.yml",
     "../config/default-settings.yml",
     settingsFile,
   ])
