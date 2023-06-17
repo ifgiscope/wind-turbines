@@ -1,4 +1,4 @@
-const DataSource = require('../data-source');
+/*const DataSource = require('../data-source');
 const Array2D = require('../lib/array-2d');
 const { getTileTypeId } = require('../lib/config-helpers');
 const { percentageEqualValue, percentageOverValue } = require('../lib/statistics');
@@ -132,3 +132,4 @@ PollutionData.MinValue = 0;
 PollutionData.MaxValue = 1;
 
 module.exports = PollutionData;
+*/

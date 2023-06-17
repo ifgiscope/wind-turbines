@@ -13,7 +13,7 @@ require("../sass/default.scss");
 const ZoneBalanceView = require("./zone-balance-view");
 const DataInspectorView = require("./data-inspector-view");
 const VariableRankListView = require("./index-list-view");
-const PollutionData = require("./data-sources/pollution-data");
+//const PollutionData = require("./data-sources/pollution-data");
 const NoiseData = require("./data-sources/noise-data");
 const GreenSpacesData = require("./data-sources/green-spaces-data");
 const TravelTimesData = require("./data-sources/travel-times-data");
@@ -71,7 +71,7 @@ cfgLoader
     const stats = new DataManager();
     stats.registerSource(new ZoningData(city, config));
     stats.registerSource(new ZoneBalanceData(city, config));
-    stats.registerSource(new PollutionData(city, config));
+    //stats.registerSource(new PollutionData(city, config));
     stats.registerSource(new NoiseData(city, config));
     stats.registerSource(new GreenSpacesData(city, config));
     stats.registerSource(new TravelTimesData(city, config));
@@ -170,7 +170,7 @@ cfgLoader
         noiseVarViewer.displayObject.y = 960;
 
         stats.events.on("update", () => {
-          emissionsVarViewer.update(stats.get("pollution-map"));
+          //emissionsVarViewer.update(stats.get("pollution-map"));
           noiseVarViewer.update(stats.get("noise-map"));
         });
 
@@ -191,8 +191,8 @@ cfgLoader
           "Travel times": "travel-times",
           "Green space prox.": "green-spaces-proximity",
           "Green space areas": "green-spaces-areas",
-          "Pollution (all)": "pollution",
-          "Pollution (resid.)": "pollution-residential",
+          //"Pollution (all)": "pollution",
+          //"Pollution (resid.)": "pollution-residential",
           "Noise (all)": "noise",
           "Noise (resid.)": "noise-residential",
         };
@@ -245,7 +245,7 @@ cfgLoader
           "traffic-density": 0,
           "travel-times": 0,
           safety: 0,
-          pollution: 0,
+          //pollution: 0,
           noise: 0,
           "green-spaces": 0,
         });
@@ -265,7 +265,7 @@ cfgLoader
           if (indexesCooldownTimer === null) {
             variableRankListView.setValues({
               "green-spaces": stats.get("green-spaces-index"),
-              pollution: stats.get("pollution-index"),
+              //pollution: stats.get("pollution-index"),
               noise: stats.get("noise-index"),
               "travel-times": stats.get("travel-times-index"),
               "traffic-density": stats.get("traffic-density-index"),

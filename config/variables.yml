@@ -11,10 +11,10 @@ variables:
     name:
       de: Verkehrssicherheit
       en: Road traffic safety
-  pollution:
-    name:
-      de: Luftverschmutzung
-      en: Pollution level
+  #pollution:
+  #name:
+  #de: Luftverschmutzung
+  #en: Pollution level
   noise:
     name:
       de: Lärmbelastung

@@ -160,7 +160,7 @@ class MapEditor {
           });
         },
       },
-      showPollution: {
+      /*showPollution: {
         start: () => {
           this.mapView.setInspectCursor();
           this.variableMapOverlay.show(
@@ -172,7 +172,7 @@ class MapEditor {
           this.variableMapOverlay.hide();
         },
         action: () => {},
-      },
+      },*/
       showNoise: {
         start: () => {
           this.mapView.setInspectCursor();
