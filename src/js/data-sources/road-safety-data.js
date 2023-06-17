@@ -1,3 +1,4 @@
+/*
 const DataSource = require('../data-source');
 const { getTileTypeId } = require('../lib/config-helpers');
 const Array2D = require('../lib/array-2d');
@@ -76,3 +77,4 @@ class RoadSafetyData extends DataSource {
 }
 
 module.exports = RoadSafetyData;
+*/

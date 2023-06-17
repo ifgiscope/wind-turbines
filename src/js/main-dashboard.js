@@ -42,7 +42,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
     variableRankListView.setValues({
       //"traffic-density": 0,
       //"travel-times": 0,
-      safety: 0,
+      //safety: 0,
       //pollution: 0,
       //noise: 0,
       "green-spaces": 0,

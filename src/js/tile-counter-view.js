@@ -1,4 +1,4 @@
-class TileCounterView {
+/*class TileCounterView {
   constructor(stats, config) {
     this.stats = stats;
     this.config = config;
@@ -117,3 +117,4 @@ class TileCounterView {
 }
 
 module.exports = TileCounterView;
+*/

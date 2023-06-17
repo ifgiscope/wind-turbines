@@ -7,10 +7,10 @@ variables:
   #name:
   #de: Fahrzeiten
   #en: Travel times
-  safety:
-    name:
-      de: Verkehrssicherheit
-      en: Road traffic safety
+  #safety:
+  #name:
+  #de: Verkehrssicherheit
+  #en: Road traffic safety
   #pollution:
   #name:
   #de: Luftverschmutzung

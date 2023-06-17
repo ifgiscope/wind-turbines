@@ -6,7 +6,7 @@ const City = require("./city");
 const MapEditor = require("./editor/map-editor");
 const VariableMapView = require("./variable-map-view");
 const CarOverlay = require("./cars/car-overlay");
-const TileCounterView = require("./tile-counter-view");
+//const TileCounterView = require("./tile-counter-view");
 const TestScenarios = require("./test/scenarios");
 const showFatalError = require("./lib/show-fatal-error");
 require("../sass/default.scss");
@@ -26,7 +26,7 @@ const CitizenRequestViewMgr = require("./citizen-request-view-mgr");
 const TextureLoader = require("./texture-loader");
 const CarSpawner = require("./cars/car-spawner");
 //const TrafficData = require("./data-sources/traffic-data");
-const RoadSafetyData = require("./data-sources/road-safety-data");
+//const RoadSafetyData = require("./data-sources/road-safety-data");
 const PowerUpInspector = require("./power-up-inspector");
 const PowerUpManager = require("./power-up-manager");
 const PowerUpDataModifier = require("./power-up-data-modifier");
@@ -76,7 +76,7 @@ cfgLoader
     stats.registerSource(new GreenSpacesData(city, config));
     //stats.registerSource(new TravelTimesData(city, config));
     //stats.registerSource(new TrafficData(city, config));
-    stats.registerSource(new RoadSafetyData(city, config));
+    //stats.registerSource(new RoadSafetyData(city, config));
     city.map.events.on("update", () => {
       stats.calculateAll();
     });
@@ -174,10 +174,10 @@ cfgLoader
           noiseVarViewer.update(stats.get("noise-map"));
         });*/
 
-        const counterView = new TileCounterView(stats, config);
+        //const counterView = new TileCounterView(stats, config);
         const zoneBalanceView = new ZoneBalanceView(stats, config);
         $("[data-component=counters]").append([
-          counterView.$element,
+          //counterView.$element,
           zoneBalanceView.$element,
         ]);
 
@@ -244,7 +244,7 @@ cfgLoader
         variableRankListView.setValues({
           //"traffic-density": 0,
           //"travel-times": 0,
-          safety: 0,
+          //safety: 0,
           //pollution: 0,
           //noise: 0,
           "green-spaces": 0,
@@ -269,7 +269,7 @@ cfgLoader
               //noise: stats.get("noise-index"),
               //"travel-times": stats.get("travel-times-index"),
               //"traffic-density": stats.get("traffic-density-index"),
-              safety: stats.get("road-safety-index"),
+              //safety: stats.get("road-safety-index"),
             });
             goalDebugView.setValues(stats.getGoals());
             indexesDirty = false;
