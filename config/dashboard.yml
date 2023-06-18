@@ -7,20 +7,20 @@ dashboard:
     title:
       de: "Status"
       en: "Status"
-  powerUps:
-    title:
-      de: "Power-Ups"
-      en: "Power-Ups"
-    button:
-      text:
-        de: "<span class='large'>Power-Ups aktivieren</span>"
-        en: "Activate Power-Ups"
-    selector:
-      # Number of seconds after which the Power-up selector times out
-      timeout: 30
-      # If true, the Power-up selector's randomizer will not consider the Power-ups that were used
-      # last, unless there are no other Power-ups available.
-      hideLastActive: true
+  #powerUps:
+  #title:
+  #de: "Power-Ups"
+  #en: "Power-Ups"
+  #button:
+  #text:
+  #de: "<span class='large'>Power-Ups aktivieren</span>"
+  #en: "Activate Power-Ups"
+  #selector:
+  # Number of seconds after which the Power-up selector times out
+  #timeout: 30
+  # If true, the Power-up selector's randomizer will not consider the Power-ups that were used
+  # last, unless there are no other Power-ups available.
+  #hideLastActive: true
   actions:
     buttons:
       #- id: show-pollution

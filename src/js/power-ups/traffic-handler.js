@@ -1,4 +1,4 @@
-const PowerUpViewHandler = require('../power-up-view-handler');
+/*const PowerUpViewHandler = require('../power-up-view-handler');
 
 class TrafficHandler extends PowerUpViewHandler {
   constructor(config, carSpawner) {
@@ -26,3 +26,4 @@ class TrafficHandler extends PowerUpViewHandler {
 }
 
 module.exports = TrafficHandler;
+*/

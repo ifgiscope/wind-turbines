@@ -7,7 +7,7 @@ const CitizenRequestView = require("./citizen-request-view");
 const CitizenRequestViewMgr = require("./citizen-request-view-mgr");
 //const ActionsPane = require("./dashboard/actions-pane");
 const { createTitle } = require("./dashboard/titles");
-const PowerUpSelector = require("./dashboard/power-up-selector");
+//const PowerUpSelector = require("./dashboard/power-up-selector");
 
 fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
   .then((response) => {
@@ -48,7 +48,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
       "green-spaces": 0,
     });
 
-    $("#col-3").append(createTitle(config.dashboard.powerUps.title));
+    // $("#col-3").append(createTitle(config.dashboard.powerUps.title));
 
     /*const actionsPane = new ActionsPane(config);
     $("#col-actions").append(actionsPane.$element);
@@ -68,7 +68,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
       })
     );*/
 
-    const powerUpSelector = new PowerUpSelector(
+    /*const powerUpSelector = new PowerUpSelector(
       config,
       $("#col-actions-powerup"),
       $("#col-3"),
@@ -79,7 +79,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
     });
     powerUpSelector.events.on("disable", (powerUpId) => {
       connector.disablePowerUp(powerUpId);
-    });
+    });*/
 
     connector.events.on("vars_update", (variables) => {
       variableRankListView.setValues(variables);
@@ -87,13 +87,13 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
     connector.events.on("goals_update", (goals) => {
       citizenRequestViewMgr.handleUpdate(goals);
     });
-    connector.events.on("power_ups_update", (activePowerUps) => {
+    /*connector.events.on("power_ups_update", (activePowerUps) => {
       powerUpSelector.update(activePowerUps);
-    });
+    });*/
     connector.events.on("connect", () => {
       connector.getVars();
       connector.getGoals();
-      connector.getActivePowerUps();
+      //connector.getActivePowerUps();
       //actionsPane.enableAll();
     });
 

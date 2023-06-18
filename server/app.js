@@ -14,8 +14,8 @@ const GreenSpacesData = require("../src/js/data-sources/green-spaces-data");
 //const TravelTimesData = require("../src/js/data-sources/travel-times-data");
 //const TrafficData = require("../src/js/data-sources/traffic-data");
 //const RoadSafetyData = require("../src/js/data-sources/road-safety-data");
-const PowerUpManager = require("../src/js/power-up-manager");
-const PowerUpDataModifier = require("../src/js/power-up-data-modifier");
+//const PowerUpManager = require("../src/js/power-up-manager");
+//const PowerUpDataModifier = require("../src/js/power-up-data-modifier");
 
 function initApp(config) {
   console.log(`Initializing ${config.cityWidth} x ${config.cityHeight} city.`);
@@ -34,11 +34,11 @@ function initApp(config) {
   city.map.events.on("update", () => {
     stats.throttledCalculateAll();
   });
-  const powerUpMgr = new PowerUpManager(config);
-  stats.registerModifier(new PowerUpDataModifier(config, powerUpMgr));
-  powerUpMgr.events.on("update", () => {
+  //const powerUpMgr = new PowerUpManager(config);
+  //stats.registerModifier(new PowerUpDataModifier(config, powerUpMgr));
+  /*powerUpMgr.events.on("update", () => {
     stats.throttledCalculateAll();
-  });
+  });*/
 
   const app = express();
   app.use(cors());
@@ -119,14 +119,14 @@ function initApp(config) {
     );
   }
 
-  function sendPowerUpsUpdate(socket) {
+  /*function sendPowerUpsUpdate(socket) {
     socket.send(
       JSON.stringify({
         type: "power_ups_update",
         powerUps: powerUpMgr.activePowerUps(),
       })
     );
-  }
+  }*/
 
   function sendPong(socket) {
     socket.send(
@@ -161,7 +161,7 @@ function initApp(config) {
           case "view_show_map_var":
             viewRepeater.emit("view_show_map_var", message.variable);
             break;
-          case "get_active_power_ups":
+          /*case "get_active_power_ups":
             sendPowerUpsUpdate(socket);
             break;
           case "enable_power_up":
@@ -169,7 +169,7 @@ function initApp(config) {
             break;
           case "disable_power_up":
             powerUpMgr.disable(message.powerUpId);
-            break;
+            break;*/
           case "ping":
             sendPong(socket);
             break;
@@ -218,9 +218,9 @@ function initApp(config) {
     wss.clients.forEach((socket) => sendGoalsMessage(socket));
   });
 
-  powerUpMgr.events.on("update", () => {
+  /*powerUpMgr.events.on("update", () => {
     wss.clients.forEach((socket) => sendPowerUpsUpdate(socket));
-  });
+  });*/
 
   viewRepeater.on("view_show_map_var", (variable) => {
     wss.clients.forEach((socket) => sendViewShowMapVar(socket, variable));

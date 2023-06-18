@@ -1,4 +1,4 @@
-const Modal = require('../modal');
+/*const Modal = require('../modal');
 
 class ModalPowerUp extends Modal {
   constructor(config, selectablePowerUps) {
@@ -42,3 +42,4 @@ class ModalPowerUp extends Modal {
 }
 
 module.exports = ModalPowerUp;
+*/

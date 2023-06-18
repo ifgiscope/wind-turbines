@@ -1,4 +1,4 @@
-const EventEmitter = require('events');
+/*const EventEmitter = require('events');
 const { createTitle } = require('./titles');
 
 class PowerUpSelector {
@@ -198,3 +198,4 @@ class PowerUpSelector {
 }
 
 module.exports = PowerUpSelector;
+*/

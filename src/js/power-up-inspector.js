@@ -1,4 +1,4 @@
-const EventEmitter = require('events');
+/*const EventEmitter = require('events');
 
 class PowerUpInspector {
   constructor(config) {
@@ -40,3 +40,4 @@ class PowerUpInspector {
 }
 
 module.exports = PowerUpInspector;
+*/

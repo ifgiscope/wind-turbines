@@ -1,3 +1,4 @@
+/*
 const EventEmitter = require('events');
 const City = require('../city');
 const ModalPowerUp = require('./modal-power-up');
@@ -116,3 +117,4 @@ class PowerUpPanel {
 }
 
 module.exports = PowerUpPanel;
++7
