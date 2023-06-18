@@ -68,30 +68,31 @@ body.dashboard {
     font-size: 1.15em;
   }
 
-  &.disabled, &:disabled {
-    color: rgba(255, 255, 255, 0.65)!important;
+  &.disabled,
+  &:disabled {
+    color: rgba(255, 255, 255, 0.65) !important;
   }
 }
 
-.btn-show-pollution {
+/*.btn-show-pollution {
   @include button-variant(#ffffff, $c-cherry, $c-cherry);
-}
+}*/
 
-.btn-show-noise {
+/*.btn-show-noise {
   @include button-variant(#ffffff, $c-grape, $c-grape);
-}
+}*/
 
-.btn-power-ups-activate {
+/*.btn-power-ups-activate {
   @include button-variant(#ffffff, $c-mint, $c-mint);
   height: calc(100% - 1em);
 
   &.disabled {
     opacity: 0.45;
   }
-}
+}*/
 
 .btn-cancel {
   @include button-variant(#ffffff, $c-gray-mid, $c-gray-mid);
   color: black;
-  height: calc(100% - 1em)
+  height: calc(100% - 1em);
 }

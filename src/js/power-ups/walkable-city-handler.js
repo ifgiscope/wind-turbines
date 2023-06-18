@@ -1,4 +1,4 @@
-const PowerUpViewHandler = require('../power-up-view-handler');
+/*const PowerUpViewHandler = require('../power-up-view-handler');
 
 class WalkableCityHandler extends PowerUpViewHandler {
   constructor(config, mapView) {
@@ -25,3 +25,4 @@ class WalkableCityHandler extends PowerUpViewHandler {
 }
 
 module.exports = WalkableCityHandler;
+*/

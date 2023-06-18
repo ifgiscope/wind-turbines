@@ -1,4 +1,4 @@
-const PowerUpViewHandler = require('../power-up-view-handler');
+/*const PowerUpViewHandler = require('../power-up-view-handler');
 const AiCarDriver = require('../cars/ai-car-driver');
 
 class AutonomousVehicleHandler extends PowerUpViewHandler {
@@ -25,3 +25,4 @@ class AutonomousVehicleHandler extends PowerUpViewHandler {
 }
 
 module.exports = AutonomousVehicleHandler;
+*/

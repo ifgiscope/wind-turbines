@@ -123,17 +123,17 @@ MapEditorPalette.Tools = [
     title: "Measure distance",
     icon: "static/fa/ruler-horizontal-solid.svg",
   },
-  {
+  /*{
     id: "showPollution",
     title: "Show pollution",
     icon: "static/fa/smog-solid.svg",
-  },
+  },*/
   // SHOULD BE COMMENTED OUT, cause it is not required for the new use case
-  {
+  /*{
     id: "showNoise",
     title: "Show noise",
     icon: "static/fa/drum-solid.svg",
-  },
+  },*/
 ];
 
 module.exports = MapEditorPalette;

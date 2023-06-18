@@ -1,4 +1,4 @@
-const DataSource = require('../data-source');
+/*const DataSource = require('../data-source');
 const Array2D = require('../lib/array-2d');
 const { getTileTypeId } = require('../lib/config-helpers');
 const { percentageEqualValue, percentageOverEqValue } = require('../lib/statistics');
@@ -123,3 +123,4 @@ NoiseData.MinValue = 0;
 NoiseData.MaxValue = 1;
 
 module.exports = NoiseData;
+*/

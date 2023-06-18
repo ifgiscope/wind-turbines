@@ -6,8 +6,8 @@ require("../sass/default.scss");
 const ServerSocketConnector = require("./server-socket-connector");
 const ConnectionStateView = require("./connection-state-view");
 const showFatalError = require("./lib/show-fatal-error");
-const PollutionData = require("./data-sources/pollution-data");
-const NoiseData = require("./data-sources/noise-data");
+//const PollutionData = require("./data-sources/pollution-data");
+//const NoiseData = require("./data-sources/noise-data");
 const DataManager = require("./data-manager");
 const TextureLoader = require("./texture-loader");
 
@@ -33,8 +33,8 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
     const city = new City(config.cityWidth, config.cityHeight);
 
     const stats = new DataManager();
-    stats.registerSource(new PollutionData(city, config));
-    stats.registerSource(new NoiseData(city, config));
+    //stats.registerSource(new PollutionData(city, config));
+    //stats.registerSource(new NoiseData(city, config));
     city.map.events.on("update", () => {
       stats.calculateAll();
     });
@@ -50,7 +50,8 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
     textureLoader.addSpritesheet("water");
     textureLoader.addSpritesheet("windturbines_small");
     textureLoader.addSpritesheet("windturbines_big");
-    textureLoader
+    // MAYBE START OUTCOMMENTING UP FROM HERE
+    /*textureLoader
       .load()
       .then((textures) => {
         $('[data-component="app-container"]').append(app.view);
@@ -60,9 +61,9 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
         mapView.displayObject.width = 1920;
         mapView.displayObject.height = 1920;
         mapView.displayObject.x = 0;
-        mapView.displayObject.y = 0;
+        mapView.displayObject.y = 0;*/
 
-        const emissionsVarViewer = new VariableMapView(
+    /*const emissionsVarViewer = new VariableMapView(
           city.map.width,
           city.map.height,
           0x953202
@@ -87,9 +88,9 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
         city.map.events.on("update", () => {
           emissionsVarViewer.update(stats.get("pollution-map"));
           noiseVarViewer.update(stats.get("noise-map"));
-        });
+        });*/
 
-        const connector = new ServerSocketConnector(
+    /*const connector = new ServerSocketConnector(
           process.env.SERVER_SOCKET_URI
         );
         connector.events.once("map_update", (cells) => {
@@ -106,7 +107,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
       })
       .catch((err) => {
         showFatalError("Error loading textures", err);
-      });
+      });*/
   })
   .catch((err) => {
     console.error(err);

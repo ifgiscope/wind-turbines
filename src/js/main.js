@@ -13,10 +13,10 @@ require("../sass/desktop.scss");
 const ZoneBalanceView = require("./zone-balance-view");
 const DataInspectorView = require("./data-inspector-view");
 const VariableRankListView = require("./index-list-view");
-const PollutionData = require("./data-sources/pollution-data");
-const NoiseData = require("./data-sources/noise-data");
+//const PollutionData = require("./data-sources/pollution-data");
+//const NoiseData = require("./data-sources/noise-data");
 const GreenSpacesData = require("./data-sources/green-spaces-data");
-const TravelTimesData = require("./data-sources/travel-times-data");
+//const TravelTimesData = require("./data-sources/travel-times-data");
 const ZoningData = require("./data-sources/zoning-data");
 const ZoneBalanceData = require("./data-sources/zone-balance-data");
 const GoalDebugView = require("./goal-debug-view");
@@ -25,9 +25,9 @@ const CitizenRequestView = require("./citizen-request-view");
 const CitizenRequestViewMgr = require("./citizen-request-view-mgr");
 const TextureLoader = require("./texture-loader");
 const CarSpawner = require("./cars/car-spawner");
-const TrafficData = require("./data-sources/traffic-data");
-const RoadSafetyData = require("./data-sources/road-safety-data");
-const PowerUpInspector = require("./power-up-inspector");
+//const TrafficData = require("./data-sources/traffic-data");
+//const RoadSafetyData = require("./data-sources/road-safety-data");
+/*const PowerUpInspector = require("./power-up-inspector");
 const PowerUpManager = require("./power-up-manager");
 const PowerUpDataModifier = require("./power-up-data-modifier");
 const PowerUpViewMgr = require("./power-up-view-mgr");
@@ -38,7 +38,7 @@ const SpawnTramHandler = require("./power-ups/spawn-tram");
 const WalkableCityHandler = require("./power-ups/walkable-city-handler");
 const DenseCityHandler = require("./power-ups/dense-city-handler");
 const AutonomousVehicleLidarHandler = require("./power-ups/autonomous-vehicle-lidar-handler");
-const PowerUpPanel = require("./editor/power-up-panel");
+const PowerUpPanel = require("./editor/power-up-panel");*/
 
 const qs = new URLSearchParams(window.location.search);
 const testScenario = qs.get("test") ? TestScenarios[qs.get("test")] : null;
@@ -54,7 +54,7 @@ cfgLoader
     "config/dashboard.yml",
     "config/traffic.yml",
     "config/cars.yml",
-    "config/power-ups.yml",
+    //"config/power-ups.yml",
     "config/default-settings.yml",
     "./settings.yml",
   ])
@@ -72,17 +72,17 @@ cfgLoader
     const stats = new DataManager();
     stats.registerSource(new ZoningData(city, config));
     stats.registerSource(new ZoneBalanceData(city, config));
-    stats.registerSource(new PollutionData(city, config));
-    stats.registerSource(new NoiseData(city, config));
+    //stats.registerSource(new PollutionData(city, config));
+    //stats.registerSource(new NoiseData(city, config));
     stats.registerSource(new GreenSpacesData(city, config));
-    stats.registerSource(new TravelTimesData(city, config));
-    stats.registerSource(new TrafficData(city, config));
-    stats.registerSource(new RoadSafetyData(city, config));
+    //stats.registerSource(new TravelTimesData(city, config));
+    //stats.registerSource(new TrafficData(city, config));
+    //stats.registerSource(new RoadSafetyData(city, config));
     city.map.events.on("update", () => {
       stats.calculateAll();
     });
-    const powerUpMgr = new PowerUpManager(config);
-    stats.registerModifier(new PowerUpDataModifier(config, powerUpMgr));
+    //const powerUpMgr = new PowerUpManager(config);
+    //stats.registerModifier(new PowerUpDataModifier(config, powerUpMgr));
 
     const app = new PIXI.Application({
       width: 1920,
@@ -127,7 +127,7 @@ cfgLoader
           app.ticker.add((time) => carSpawner.animate(time));
         }
 
-        const powerUpViewMgr = new PowerUpViewMgr();
+        /*const powerUpViewMgr = new PowerUpViewMgr();
         app.ticker.add((time) => powerUpViewMgr.animate(time));
         powerUpViewMgr.registerHandler(new TrafficHandler(config, carSpawner));
         powerUpViewMgr.registerHandler(
@@ -146,7 +146,7 @@ cfgLoader
         powerUpViewMgr.registerHandler(
           new AutonomousVehicleLidarHandler(config, carOverlay),
           true
-        );
+        );*/
 
         const counterView = new TileCounterView(stats, config);
         const zoneBalanceView = new ZoneBalanceView(stats, config);
@@ -162,13 +162,13 @@ cfgLoader
         );
 
         const variables = {
-          "Travel times": "travel-times",
+          //"Travel times": "travel-times",
           "Green space prox.": "green-spaces-proximity",
           "Green space areas": "green-spaces-areas",
-          "Pollution (all)": "pollution",
-          "Pollution (resid.)": "pollution-residential",
-          "Noise (all)": "noise",
-          "Noise (resid.)": "noise-residential",
+          //"Pollution (all)": "pollution",
+          //"Pollution (resid.)": "pollution-residential",
+          //"Noise (all)": "noise",
+          //"Noise (resid.)": "noise-residential",
         };
 
         const varSelector = $("<select></select>")
@@ -202,7 +202,7 @@ cfgLoader
           )
           .appendTo($("[data-component=dataInspector]"));
 
-        const powerUpInspector = new PowerUpInspector(config);
+        /*const powerUpInspector = new PowerUpInspector(config);
         $("[data-component=powerUpInspector]").append(
           powerUpInspector.$element
         );
@@ -210,17 +210,17 @@ cfgLoader
           powerUpMgr.setState(id, enabled);
           stats.calculateAll();
           powerUpViewMgr.update(powerUpInspector.getEnabled());
-        });
+        });*/
 
         const variableRankListView = new VariableRankListView(config.variables);
         // Todo: Remove the lines below
         $('[data-component="status"]').append(variableRankListView.$element);
         variableRankListView.setValues({
-          "traffic-density": 0,
-          "travel-times": 0,
-          safety: 0,
-          pollution: 0,
-          noise: 0,
+          //"traffic-density": 0,
+          //"travel-times": 0,
+          //safety: 0,
+          //pollution: 0,
+          //noise: 0,
           "green-spaces": 0,
         });
         window.variableRankListView = variableRankListView;
@@ -239,11 +239,11 @@ cfgLoader
           if (indexesCooldownTimer === null) {
             variableRankListView.setValues({
               "green-spaces": stats.get("green-spaces-index"),
-              pollution: stats.get("pollution-index"),
-              noise: stats.get("noise-index"),
-              "travel-times": stats.get("travel-times-index"),
-              "traffic-density": stats.get("traffic-density-index"),
-              safety: stats.get("road-safety-index"),
+              //pollution: stats.get("pollution-index"),
+              //noise: stats.get("noise-index"),
+              //"travel-times": stats.get("travel-times-index"),
+              //"traffic-density": stats.get("traffic-density-index"),
+              //safety: stats.get("road-safety-index"),
             });
             goalDebugView.setValues(stats.getGoals());
             indexesDirty = false;
@@ -273,7 +273,7 @@ cfgLoader
           citizenRequestViewMgr.handleUpdate(stats.getGoals());
         });
 
-        const powerUpPanel = new PowerUpPanel(config);
+        /*const powerUpPanel = new PowerUpPanel(config);
         function updatePowerUps() {
           stats.calculateAll();
           powerUpViewMgr.update(powerUpMgr.activePowerUps());
@@ -287,7 +287,7 @@ cfgLoader
           powerUpMgr.setState(id, false);
           updatePowerUps();
         });
-        $("[data-component=powerUpPanel]").append(powerUpPanel.$element);
+        $("[data-component=powerUpPanel]").append(powerUpPanel.$element);*/
 
         if (testScenario) {
           testScenario(city, carOverlay);

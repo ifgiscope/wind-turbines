@@ -1,4 +1,5 @@
 /* globals PIXI */
+/*
 const PowerUpViewHandler = require('../power-up-view-handler');
 const { randomItem } = require('../lib/random');
 // const AiCarDriver = require('../cars/ai-car-driver');
@@ -208,3 +209,4 @@ class AutonomousVehicleLidarHandler extends PowerUpViewHandler {
 }
 
 module.exports = AutonomousVehicleLidarHandler;
+*/

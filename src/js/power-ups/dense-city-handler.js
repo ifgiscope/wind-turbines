@@ -1,3 +1,4 @@
+/*
 const PowerUpViewHandler = require("../power-up-view-handler");
 const MapView = require("../map-view");
 const { getTileTypeId } = require("../lib/config-helpers");
@@ -49,8 +50,9 @@ class DenseCityHandler extends PowerUpViewHandler {
       )
       .endFill();
   }
+  */
 
-  /*renderCommercial(i, j) {
+/*renderCommercial(i, j) {
     this.mapView.getBgTile(i, j)
       .clear()
       .beginFill(Number(`0x${this.colors.commercial.substr(1)}`), 1)
@@ -60,6 +62,6 @@ class DenseCityHandler extends PowerUpViewHandler {
         MapView.TILE_SIZE / 2, MapView.TILE_SIZE / 2)
       .endFill();
   }*/
-}
+//}
 
-module.exports = DenseCityHandler;
+//module.exports = DenseCityHandler;

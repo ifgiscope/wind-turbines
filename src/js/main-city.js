@@ -10,14 +10,14 @@ const CarOverlay = require("./cars/car-overlay");
 const TextureLoader = require("./texture-loader");
 const CarSpawner = require("./cars/car-spawner");
 const VariableMapOverlay = require("./variable-map-overlay");
-const PowerUpViewMgr = require("./power-up-view-mgr");
-const TrafficHandler = require("./power-ups/traffic-handler");
-const AutonomousVehicleHandler = require("./power-ups/autonomous-vehicle-handler");
-const MaxSpeedHandler = require("./power-ups/max-speed-handler");
-const SpawnTramHandler = require("./power-ups/spawn-tram");
-const WalkableCityHandler = require("./power-ups/walkable-city-handler");
-const DenseCityHandler = require("./power-ups/dense-city-handler");
-const AutonomousVehicleLidarHandler = require("./power-ups/autonomous-vehicle-lidar-handler");
+//const PowerUpViewMgr = require("./power-up-view-mgr");
+//const TrafficHandler = require("./power-ups/traffic-handler");
+//const AutonomousVehicleHandler = require("./power-ups/autonomous-vehicle-handler");
+//const MaxSpeedHandler = require("./power-ups/max-speed-handler");
+//const SpawnTramHandler = require("./power-ups/spawn-tram");
+//const WalkableCityHandler = require("./power-ups/walkable-city-handler");
+//const DenseCityHandler = require("./power-ups/dense-city-handler");
+//const AutonomousVehicleLidarHandler = require("./power-ups/autonomous-vehicle-lidar-handler");
 
 fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
   .then((response) => {
@@ -69,7 +69,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
         const carSpawner = new CarSpawner(carOverlay, config);
         app.ticker.add((time) => carSpawner.animate(time));
 
-        const powerUpViewMgr = new PowerUpViewMgr();
+        /*const powerUpViewMgr = new PowerUpViewMgr();
         app.ticker.add((time) => powerUpViewMgr.animate(time));
         powerUpViewMgr.registerHandler(new TrafficHandler(config, carSpawner));
         powerUpViewMgr.registerHandler(
@@ -86,7 +86,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
         powerUpViewMgr.registerHandler(
           new AutonomousVehicleLidarHandler(config, carOverlay),
           true
-        );
+        );*/
 
         const variableMapOverlay = new VariableMapOverlay(mapView, config);
         app.ticker.add((time) => variableMapOverlay.animate(time));
@@ -99,7 +99,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
         });
         connector.events.on("connect", () => {
           connector.getMap();
-          connector.getActivePowerUps();
+          //connector.getActivePowerUps();
         });
         connector.events.on("view_show_map_var", (variable, data) => {
           variableMapOverlay.show(
@@ -110,9 +110,9 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
             variableMapOverlay.hide();
           }, config.variableMapOverlay.overlayDuration * 1000);
         });
-        connector.events.on("power_ups_update", (activePowerUps) => {
+        /*connector.events.on("power_ups_update", (activePowerUps) => {
           powerUpViewMgr.update(activePowerUps);
-        });
+        });*/
 
         const connStateView = new ConnectionStateView(connector);
         $("body").append(connStateView.$element);

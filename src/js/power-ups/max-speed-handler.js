@@ -1,4 +1,4 @@
-const PowerUpViewHandler = require('../power-up-view-handler');
+/*const PowerUpViewHandler = require('../power-up-view-handler');
 
 class MaxSpeedHandler extends PowerUpViewHandler {
   constructor(config, carOverlay) {
@@ -22,3 +22,4 @@ class MaxSpeedHandler extends PowerUpViewHandler {
 }
 
 module.exports = MaxSpeedHandler;
+*/

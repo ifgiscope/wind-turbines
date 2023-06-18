@@ -1,4 +1,4 @@
-const DataSource = require("../data-source");
+/*const DataSource = require("../data-source");
 
 class TrafficData extends DataSource {
   constructor(city, config) {
@@ -9,10 +9,10 @@ class TrafficData extends DataSource {
     this.zoneCount = 0;
     this.roadCount = 0;
 
-    this.goodDelta =
-      config.goals["traffic-density"]["road-zone-ratio-delta-good"] || 0.1;
-    this.fairDelta =
-      config.goals["traffic-density"]["road-zone-ratio-delta-fair"] || 0.35;
+    //this.goodDelta =
+      //config.goals["traffic-density"]["road-zone-ratio-delta-good"] || 0.1;
+    //this.fairDelta =
+      //config.goals["traffic-density"]["road-zone-ratio-delta-fair"] || 0.35;
   }
 
   getVariables() {
@@ -82,3 +82,4 @@ class TrafficData extends DataSource {
 }
 
 module.exports = TrafficData;
+*/
