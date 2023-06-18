@@ -47,6 +47,8 @@ goals:
   zone-balance:
     # Percentage of zoned areas that should (ideally) be residential
     ideal-residential-percentage: 0.5
+    # Percentage of zoned areas that should (ideally) be residential
+    ideal-windTurbine-percentage: 0.5
     # Percentage of zoned areas that should (ideally) be commercial
     #ideal-commercial-percentage: 0.25
     # Percentage of zoned areas that should (ideally) be industrial

@@ -9,6 +9,8 @@ class ZoneBalanceData extends DataSource {
 
     this.tileTypeIds = {
       residential: getTileTypeId(this.config, "residential"),
+      /*windTurbineSmall: getTileTypeId(this.config, "windTurbineSmall"),
+      windTurbineBig: getTileTypeId(this.config, "windTurbineBig"),*/
       //commercial: getTileTypeId(this.config, 'commercial'),
       //industrial: getTileTypeId(this.config, "industrial"),
     };
@@ -17,6 +19,8 @@ class ZoneBalanceData extends DataSource {
       residential:
         this.config.goals["zone-balance"]["ideal-residential-percentage"] ||
         0.5,
+      //windTurbineSmall:
+
       //commercial: this.config.goals['zone-balance']['ideal-commercial-percentage'] || 0.25,
       //industrial: this.config.goals["zone-balance"]["ideal-industrial-percentage"] || 0.25,
     };
