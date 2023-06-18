@@ -87,6 +87,8 @@ CitizenRequestView.tileReferences = {
   W: "water",
   P: "park",
   R: "residential",
+  S: "windTurbineSmall",
+  B: "windTurbineBig",
   //C: 'commercial',
   //I: "industrial",
   X: "road",

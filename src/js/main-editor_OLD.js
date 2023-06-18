@@ -6,8 +6,8 @@ require("../sass/default.scss");
 const ServerSocketConnector = require("./server-socket-connector");
 const ConnectionStateView = require("./connection-state-view");
 const showFatalError = require("./lib/show-fatal-error");
-//const PollutionData = require("./data-sources/pollution-data");
-//const NoiseData = require("./data-sources/noise-data");
+const PollutionData = require("./data-sources/pollution-data");
+const NoiseData = require("./data-sources/noise-data");
 const DataManager = require("./data-manager");
 const TextureLoader = require("./texture-loader");
 
@@ -33,8 +33,8 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
     const city = new City(config.cityWidth, config.cityHeight);
 
     const stats = new DataManager();
-    //stats.registerSource(new PollutionData(city, config));
-    //stats.registerSource(new NoiseData(city, config));
+    stats.registerSource(new PollutionData(city, config));
+    stats.registerSource(new NoiseData(city, config));
     city.map.events.on("update", () => {
       stats.calculateAll();
     });

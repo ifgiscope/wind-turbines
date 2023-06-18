@@ -8,6 +8,8 @@ class ZoneBalanceView {
 
     this.levels = {
       residential: 0,
+      windTurbineSmall: 0, //ADDED
+      windTurbineBig: 0, //ADDED
       //commercial: 0,
       //industrial: 0,
     };
