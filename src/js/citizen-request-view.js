@@ -6,8 +6,6 @@ class CitizenRequestView {
     this.config = config;
     this.$element = $("<div></div>").addClass("citizen-requests");
 
-    this.requests = {};
-
     this.tileColors = Object.fromEntries(
       Object.entries(CitizenRequestView.tileReferences).map(([key, type]) => [
         key,
@@ -87,10 +85,9 @@ CitizenRequestView.tileReferences = {
   W: "water",
   P: "park",
   R: "residential",
+  //E: "energy",
   S: "windTurbineSmall",
-  B: "windTurbineBig",
-  //C: 'commercial',
-  //I: "industrial",
+  //B: "windTurbineBig",
   X: "road",
 };
 CitizenRequestView.tileRefRegexp = new RegExp(

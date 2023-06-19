@@ -20,14 +20,9 @@ citizenRequests:
     de: "*Mehr R[Wohngebiete]!* Wir brauchen mehr Häuser, in denen wir leben können."
     group: zoning
     urgent: true
-  zone-balance-wS-low:
-    en: "*More S[small wind turbines]!* We need more energy to produce."
-    de: "*Mehr S[kleine Windenergieanlagen]!* Wir brauchen mehr Windenergie."
-    group: zoning
-    urgent: true
-  zone-balance-wB-low:
-    en: "*More B[big wind turbines]!* We need more energy to produce."
-    de: "*Mehr B[große Windenergieanlagen]!* Wir brauchen mehr Windenergie."
+  zone-balance-e-low:
+    en: "*More S[energy]!* We need more energy to produce."
+    de: "*Mehr S[Energie]!* Wir brauchen mehr Windenergie."
     group: zoning
     urgent: true
   zone-balance-r-high:
@@ -35,14 +30,9 @@ citizenRequests:
     de: "*Weniger R[Wohngebiete]!* Viele Häuser stehen leer."
     group: zoning
     urgent: false
-  zone-balance-wS-high:
-    en: "*Less S[small wind turbines]!* A lot of energy is unused and wind turbines destroy the landscape."
-    de: "*Weniger S[kleine Windenergieanlagen]!* Viel Energie bleibt ungenutzt und die Anlagen zerstören das Landschaftsbild."
-    group: zoning
-    urgent: false
-  zone-balance-wB-high:
-    en: "*Less B[big wind turbines]!* A lot of energy is unused and wind turbines destroy the landscape."
-    de: "*Weniger B[große Windenergieanlagen]!* Viel Energie bleibt ungenutzt und die Anlagen zerstören das Landschaftsbild."
+  zone-balance-e-high:
+    en: "*Less S[energy]!* A lot of energy is unused and wind turbines destroy the landscape."
+    de: "*Weniger S[Energie]!* Viel Energie bleibt ungenutzt und die Anlagen zerstören das Landschaftsbild."
     group: zoning
     urgent: false
 citizenIcons:

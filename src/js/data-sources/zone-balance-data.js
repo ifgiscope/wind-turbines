@@ -19,20 +19,20 @@ class ZoneBalanceData extends DataSource {
       residential:
         this.config.goals["zone-balance"]["ideal-residential-percentage"] ||
         0.5,
-      windTurbineSmall:
+      /*windTurbineSmall:
         this.config.goals["zone-balance"]["ideal-windTurbine-percentage"] ||
         0.25,
       windTurbineBig:
         this.config.goals["zone-balance"]["ideal-windTurbine-percentage"] ||
-        0.25,
-      /*windTurbine:
-        this.config.goals["zone-balance"]["ideal-windTurbine-percentage"] ||
         0.25,*/
+      windTurbine:
+        this.config.goals["zone-balance"]["ideal-windTurbine-percentage"] ||
+        0.25,
       //commercial: this.config.goals['zone-balance']['ideal-commercial-percentage'] || 0.25,
       //industrial: this.config.goals["zone-balance"]["ideal-industrial-percentage"] || 0.25,
     };
 
-    this.undervelopedPct =
+    this.underdevelopedPct =
       this.config.goals["zone-balance"]["underdeveloped-percentage"] || 0.35;
     this.overdevelopedPct =
       this.config.goals["zone-balance"]["overdeveloped-percentage"] || 0.47;
@@ -42,7 +42,7 @@ class ZoneBalanceData extends DataSource {
 
     this.amount = {
       residential: 0,
-      //windTurbine: 0,
+      windTurbine: 0,
       windTurbineSmall: 0,
       windTurbineBig: 0,
       //commercial: 0,
@@ -53,8 +53,12 @@ class ZoneBalanceData extends DataSource {
     const tileCount = this.city.map.width * this.city.map.height;
 
     Object.keys(this.tileTypeIds).forEach((type) => {
+      // ADDED THIS IF CASE
+      if (type == ("windTurbineSmall" || "windTurbineBig")) {
+        type = "windTurbine";
+      }
       this.underDevThreshold[type] = Math.round(
-        this.idealPct[type] * this.undervelopedPct * tileCount
+        this.idealPct[type] * this.underdevelopedPct * tileCount
       );
       this.overDevThreshold[type] = Math.round(
         this.idealPct[type] * this.overdevelopedPct * tileCount
@@ -63,6 +67,7 @@ class ZoneBalanceData extends DataSource {
 
     this.percentage = {
       residential: 0,
+      windTurbine: 0,
       windTurbineSmall: 0,
       windTurbineBig: 0,
       //commercial: 0,
@@ -71,6 +76,7 @@ class ZoneBalanceData extends DataSource {
 
     this.difference = {
       residential: 0,
+      windTurbine: 0,
       windTurbineSmall: 0,
       windTurbineBig: 0,
       //commercial: 0,
@@ -81,16 +87,16 @@ class ZoneBalanceData extends DataSource {
   getVariables() {
     return {
       "residential-percentage": () => this.percentage.residential,
-      //"windTurbine-percentage": () => this.percentage.windTurbine,
+      "windTurbine-percentage": () => this.percentage.windTurbine,
       "windTurbineSmall-percentage": () => this.percentage.windTurbineSmall,
       "windTurbineBig-percentage": () => this.percentage.windTurbineBig,
       //"windTurbine-percentage": () => this.percentage.windTurbine,
       //'commercial-percentage': () => this.percentage.commercial,
       //"industrial-percentage": () => this.percentage.industrial,
       "residential-difference": () => this.difference.residential,
+      "windTurbine-difference": () => this.difference.windTurbine,
       "windTurbineSmall-difference": () => this.difference.windTurbineSmall,
       "windTurbineBig-difference": () => this.difference.windTurbineBig,
-      //"windTurbine-difference": () => this.difference.windTurbine,
       //'commercial-difference': () => this.difference.commercial,
       //"industrial-difference": () => this.difference.industrial,
     };
@@ -133,6 +139,18 @@ class ZoneBalanceData extends DataSource {
         ),
       },
       {
+        id: "zone-balance-e-low",
+        category: "zone-balance",
+        priority: 1,
+        condition:
+          this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 >=
+          this.underDevThreshold.windTurbine,
+        progress: this.goalProgress(
+          1 + this.difference.windTurbine,
+          1 - this.acceptablePctDiff
+        ),
+      },
+      /*{
         id: "zone-balance-wS-low",
         category: "zone-balance",
         priority: 1,
@@ -154,7 +172,7 @@ class ZoneBalanceData extends DataSource {
           1 + this.difference.windTurbineBig,
           1 - this.acceptablePctDiff
         ),
-      },
+      },*/
       /*{
         id: "zone-balance-i-low",
         category: "zone-balance",
@@ -183,6 +201,18 @@ class ZoneBalanceData extends DataSource {
         ),
       },
       {
+        id: "zone-balance-e-high",
+        category: "zone-balance",
+        priority: 2,
+        condition:
+          this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 <=
+          this.overDevThreshold.windTurbine,
+        progress: this.goalProgress(
+          1 - this.difference.windTurbine,
+          1 - this.acceptablePctDiff
+        ),
+      },
+      /*{
         id: "zone-balance-wS-high",
         category: "zone-balance",
         priority: 2,
@@ -204,7 +234,7 @@ class ZoneBalanceData extends DataSource {
           1 - this.difference.windTurbineBig,
           1 - this.acceptablePctDiff
         ),
-      },
+      },*/
       /*{
         id: "zone-balance-i-high",
         category: "zone-balance",
