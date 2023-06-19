@@ -12,6 +12,11 @@ goals:
     proximity-near: 3
     # Percentage of residential areas that need to be closer than the threshold (as fraction, 1 = 100%).
     proximity-goal-percentage: 0.75
+  wind-turbines:
+    max-energy-level: 1
+    high-energy-level: 0.5
+    med-energy-level: 0.25
+
   #noise:
   # Maximum noise level (in [0,1])
   #max-noise-level: 1
