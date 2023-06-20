@@ -35,6 +35,11 @@ citizenRequests:
     de: "*Weniger S[Energie]!* Viel Energie bleibt ungenutzt und die Anlagen zerstören das Landschaftsbild."
     group: zoning
     urgent: false
+  wind-turbine-distance-low:
+    en: "*Increase spacing!* There is not enough spacing around the wind turbines."
+    de: "*Vergrößere den Abstand!* Der Abstand um die Windenergieanlagen herum ist nicht groß genug."
+    group: distance
+    urgent: true
 citizenIcons:
   regular:
     - static/openmoji/bw/man-beard.svg
