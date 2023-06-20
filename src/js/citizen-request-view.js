@@ -6,6 +6,8 @@ class CitizenRequestView {
     this.config = config;
     this.$element = $("<div></div>").addClass("citizen-requests");
 
+    this.requests = {};
+
     this.tileColors = Object.fromEntries(
       Object.entries(CitizenRequestView.tileReferences).map(([key, type]) => [
         key,
@@ -86,7 +88,7 @@ CitizenRequestView.tileReferences = {
   P: "park",
   R: "residential",
   //E: "energy",
-  S: "windTurbineSmall",
+  S: "windTurbineSmall", // only one turbine is required cause we only need the background color of this tile at this point
   //B: "windTurbineBig",
   X: "road",
 };

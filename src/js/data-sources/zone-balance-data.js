@@ -87,16 +87,19 @@ class ZoneBalanceData extends DataSource {
   getVariables() {
     return {
       "residential-percentage": () => this.percentage.residential,
-      "windTurbine-percentage": () => this.percentage.windTurbine,
       "windTurbineSmall-percentage": () => this.percentage.windTurbineSmall,
       "windTurbineBig-percentage": () => this.percentage.windTurbineBig,
-      //"windTurbine-percentage": () => this.percentage.windTurbine,
+      "windTurbine-percentage": () => this.percentage.windTurbine,
+      /*"windTurbine-percentage": () =>
+        this.percentage.windTurbineSmall + this.percentage.windTurbineBig,*/
       //'commercial-percentage': () => this.percentage.commercial,
       //"industrial-percentage": () => this.percentage.industrial,
       "residential-difference": () => this.difference.residential,
-      "windTurbine-difference": () => this.difference.windTurbine,
       "windTurbineSmall-difference": () => this.difference.windTurbineSmall,
       "windTurbineBig-difference": () => this.difference.windTurbineBig,
+      "windTurbine-difference": () => this.difference.windTurbine,
+      /*"windTurbine-difference": () =>
+        this.difference.windTurbineSmall + this.difference.windTurbineBig,*/
       //'commercial-difference': () => this.difference.commercial,
       //"industrial-difference": () => this.difference.industrial,
     };
@@ -123,6 +126,20 @@ class ZoneBalanceData extends DataSource {
         1
       );
     });
+
+    const type = "windTurbine"; // Added cause windTurbine is not listed in tiles.yml
+    const subTypes = ["Small", "Big"];
+    this.percentage[type] =
+      total === 0
+        ? this.idealPct[type]
+        : (this.dataManager.get(`zones-${type}${subTypes[0]}-count`) +
+            this.dataManager.get(`zones-${type}${subTypes[1]}-count`)) /
+          total;
+
+    this.difference[type] = Math.min(
+      (this.percentage[type] - this.idealPct[type]) / this.idealPct[type],
+      1
+    );
   }
 
   getGoals() {
@@ -142,9 +159,13 @@ class ZoneBalanceData extends DataSource {
         id: "zone-balance-e-low",
         category: "zone-balance",
         priority: 1,
+        a: this.amount.windTurbineSmall + this.amount.windTurbineBig * 2,
+        b: this.amount.residential,
         condition:
-          this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 >=
-          this.underDevThreshold.windTurbine,
+          /*this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 >=
+            this.underDevThreshold.windTurbine &&*/
+          this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 >
+          this.amount.residential,
         progress: this.goalProgress(
           1 + this.difference.windTurbine,
           1 - this.acceptablePctDiff
@@ -202,11 +223,15 @@ class ZoneBalanceData extends DataSource {
       },
       {
         id: "zone-balance-e-high",
+        a: this.amount.windTurbineSmall + this.amount.windTurbineBig * 2,
+        b: this.amount.residential,
         category: "zone-balance",
         priority: 2,
         condition:
+          /*this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 <=
+            this.overDevThreshold.windTurbine &&*/
           this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 <=
-          this.overDevThreshold.windTurbine,
+          this.amount.residential,
         progress: this.goalProgress(
           1 - this.difference.windTurbine,
           1 - this.acceptablePctDiff

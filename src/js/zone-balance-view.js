@@ -9,9 +9,9 @@ class ZoneBalanceView {
     this.levels = {
       residential: 0,
       //energy: 0,
-      //windTurbine: 0, //ADDED
-      windTurbineSmall: 0, //ADDED
-      windTurbineBig: 0, //ADDED
+      windTurbine: 0, //ADDED
+      //windTurbineSmall: 0, //ADDED
+      //windTurbineBig: 0, //ADDED
       //commercial: 0,
       //industrial: 0,
     };
@@ -24,13 +24,17 @@ class ZoneBalanceView {
         $("<div></div>")
           .addClass(["bar", `bar-${type}`])
           .append([
-            $("<div></div>").addClass("label").text(type[0].toUpperCase()),
+            $("<div></div>")
+              .addClass("label")
+              .text(type[0].toUpperCase() + type[1]),
             $("<div></div>")
               .addClass("over")
               .append($("<div></div><div></div><div></div>")),
             $("<div></div>").addClass("status"),
             $("<div></div>")
               .addClass("under")
+              /*.text(type)
+              .css({ "font-size": 10 })*/
               .append($("<div></div><div></div><div></div>")),
           ]),
       ])

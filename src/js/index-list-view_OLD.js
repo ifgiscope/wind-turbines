@@ -7,6 +7,7 @@ class IndexListView {
     this.variableRankViews = Object.fromEntries(
       Object.entries(varDefs).map(([id, def]) => [id, new IndexView(id, def)])
     );
+    console.log(this.variableRankViews);
     this.$element.append(
       $("<div></div>")
         .addClass("variables")

@@ -105,7 +105,7 @@ class TileCounterView {
     });
 
     this.computedFieldDefs.forEach(({ id, calculate }) => {
-      this.fields[id].text(calculate());
+      this.fields[id].text(`${calculate()} kWh`);
     });
   }
 

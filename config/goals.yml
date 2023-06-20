@@ -12,7 +12,9 @@ goals:
     proximity-near: 3
     # Percentage of residential areas that need to be closer than the threshold (as fraction, 1 = 100%).
     proximity-goal-percentage: 0.75
-  #wind-turbines:
+  wind-turbines:
+    windTurbineSmall-distance-buffer: 1
+    windTurbineBig-distance-buffer: 2
   energy:
     max-energy-level: 1
     high-energy-level: 0.5

@@ -16,6 +16,7 @@ const VariableRankListView = require("./index-list-view");
 //const PollutionData = require("./data-sources/pollution-data");
 //const NoiseData = require("./data-sources/noise-data");
 const GreenSpacesData = require("./data-sources/green-spaces-data");
+const WindTurbinesData = require("./data-sources/wind-turbines-data_WT");
 //const TravelTimesData = require("./data-sources/travel-times-data");
 const ZoningData = require("./data-sources/zoning-data");
 const ZoneBalanceData = require("./data-sources/zone-balance-data");
@@ -74,6 +75,7 @@ cfgLoader
     //stats.registerSource(new PollutionData(city, config));
     //stats.registerSource(new NoiseData(city, config));
     stats.registerSource(new GreenSpacesData(city, config));
+    stats.registerSource(new WindTurbinesData(city, config));
     //stats.registerSource(new TravelTimesData(city, config));
     //stats.registerSource(new TrafficData(city, config));
     //stats.registerSource(new RoadSafetyData(city, config));

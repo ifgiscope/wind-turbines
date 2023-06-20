@@ -16,6 +16,7 @@ const VariableRankListView = require("./index-list-view");
 //const PollutionData = require("./data-sources/pollution-data");
 //const NoiseData = require("./data-sources/noise-data");
 const GreenSpacesData = require("./data-sources/green-spaces-data");
+const WindTurbinesData = require("./data-sources/wind-turbines-data_WT");
 //const TravelTimesData = require("./data-sources/travel-times-data");
 const ZoningData = require("./data-sources/zoning-data");
 const ZoneBalanceData = require("./data-sources/zone-balance-data");
@@ -75,9 +76,11 @@ cfgLoader
     //stats.registerSource(new PollutionData(city, config));
     //stats.registerSource(new NoiseData(city, config));
     stats.registerSource(new GreenSpacesData(city, config));
+    stats.registerSource(new WindTurbinesData(city, config));
     //stats.registerSource(new TravelTimesData(city, config));
     //stats.registerSource(new TrafficData(city, config));
     //stats.registerSource(new RoadSafetyData(city, config));
+    stats.calculateAll(); // Calculation gets done here once, because the citys default state is no longer only empty cells, but park cells. Therefore the tile count must be calculated here too, default 0 is no longer correct
     city.map.events.on("update", () => {
       stats.calculateAll();
     });
@@ -150,6 +153,7 @@ cfgLoader
 
         const counterView = new TileCounterView(stats, config);
         const zoneBalanceView = new ZoneBalanceView(stats, config);
+
         $("[data-component=counters]").append([
           counterView.$element,
           zoneBalanceView.$element,
@@ -163,6 +167,7 @@ cfgLoader
 
         const variables = {
           //"Travel times": "travel-times",
+          // ADD HERE SOMETHING ABOUT ENERGY
           "Green space prox.": "green-spaces-proximity",
           "Green space areas": "green-spaces-areas",
           //"Pollution (all)": "pollution",
@@ -205,7 +210,7 @@ cfgLoader
         /*const powerUpInspector = new PowerUpInspector(config);
         $("[data-component=powerUpInspector]").append(
           powerUpInspector.$element
-        );
+        );s
         powerUpInspector.events.on("power-up-change", (id, enabled) => {
           powerUpMgr.setState(id, enabled);
           stats.calculateAll();
@@ -221,7 +226,7 @@ cfgLoader
           //safety: 0,
           //pollution: 0,
           //noise: 0,
-          "green-spaces": 0,
+          "green-spaces": 0, // 0 is neutral
         });
         window.variableRankListView = variableRankListView;
 
@@ -239,7 +244,7 @@ cfgLoader
           if (indexesCooldownTimer === null) {
             variableRankListView.setValues({
               "green-spaces": stats.get("green-spaces-index"),
-              //"wind-turbines": stats.get("wind-turbines-index"),
+              "wind-turbines": stats.get("wind-turbines-index"),
               //pollution: stats.get("pollution-index"),
               //noise: stats.get("noise-index"),
               //"travel-times": stats.get("travel-times-index"),
