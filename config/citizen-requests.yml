@@ -35,9 +35,14 @@ citizenRequests:
     de: "*Weniger S[Energie]!* Viel Energie bleibt ungenutzt und die Anlagen zerstören das Landschaftsbild."
     group: zoning
     urgent: false
-  wind-turbine-distance-low:
-    en: "*Increase spacing!* There is not enough spacing around the wind turbines."
-    de: "*Vergrößere den Abstand!* Der Abstand um die Windenergieanlagen herum ist nicht groß genug."
+  wind-turbine-distance-road-water-low:
+    en: "*Increase spacing to X[roads] and W[water]!* There is not enough spacing around the wind turbines."
+    de: "*Vergrößere den Abstand um X[Straßen] and W[Wasser]!* Der Abstand um die Windenergieanlagen herum ist nicht groß genug."
+    group: distance
+    urgent: false
+  wind-turbine-distance-residential-low:
+    en: "*Increase spacing to R[residential zones]!* There is not enough spacing around the wind turbines."
+    de: "*Vergrößere den Abstand zu R[Wohngebieten]!* Der Abstand um die Windenergieanlagen herum ist nicht groß genug."
     group: distance
     urgent: true
 citizenIcons:

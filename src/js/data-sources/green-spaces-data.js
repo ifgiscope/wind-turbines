@@ -66,6 +66,7 @@ class GreenSpacesData extends DataSource {
       parkTileId,
       waterTileId,
     ]);
+    //console.log(allDistances);
 
     this.proximities = [];
     this.city.map.allCells().forEach(([x, y, tile]) => {
@@ -73,6 +74,7 @@ class GreenSpacesData extends DataSource {
         this.proximities.push(allDistances[y][x]);
       }
     });
+    //console.log(this.proximities);
   }
 
   calculateIndex() {

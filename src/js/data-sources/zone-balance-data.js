@@ -159,8 +159,6 @@ class ZoneBalanceData extends DataSource {
         id: "zone-balance-e-low",
         category: "zone-balance",
         priority: 1,
-        a: this.amount.windTurbineSmall + this.amount.windTurbineBig * 2,
-        b: this.amount.residential,
         condition:
           /*this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 >=
             this.underDevThreshold.windTurbine &&*/
@@ -223,8 +221,6 @@ class ZoneBalanceData extends DataSource {
       },
       {
         id: "zone-balance-e-high",
-        a: this.amount.windTurbineSmall + this.amount.windTurbineBig * 2,
-        b: this.amount.residential,
         category: "zone-balance",
         priority: 2,
         condition:

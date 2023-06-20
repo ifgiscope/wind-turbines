@@ -51,6 +51,8 @@ class CitizenRequestViewMgr {
     selectedGoals.forEach((goal) => {
       this.displayRequest(goal.id);
     });
+
+    console.log(selectedGoals);
   }
 
   getGroups() {
