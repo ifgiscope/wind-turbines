@@ -1,62 +1,62 @@
 {
   "frames": {
-    "turbine-01": {
+    "turbine-big-01": {
       "frame": { "x": 0, "y": 0, "w": 72, "h": 72 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 72, "h": 72 },
       "sourceSize": { "w": 72, "h": 72 }
     },
-    "turbine-02": {
+    "turbine-big-02": {
       "frame": { "x": 72, "y": 0, "w": 72, "h": 72 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 72, "h": 72 },
       "sourceSize": { "w": 72, "h": 72 }
     },
-    "turbine-03": {
+    "turbine-big-03": {
       "frame": { "x": 144, "y": 0, "w": 72, "h": 72 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 72, "h": 72 },
       "sourceSize": { "w": 72, "h": 72 }
     },
-    "turbine-04": {
+    "turbine-big-04": {
       "frame": { "x": 0, "y": 72, "w": 72, "h": 72 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 72, "h": 72 },
       "sourceSize": { "w": 72, "h": 72 }
     },
-    "turbine-05": {
+    "turbine-big-05": {
       "frame": { "x": 72, "y": 72, "w": 72, "h": 72 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 72, "h": 72 },
       "sourceSize": { "w": 72, "h": 72 }
     },
-    "turbine-06": {
+    "turbine-big-06": {
       "frame": { "x": 144, "y": 72, "w": 72, "h": 72 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 72, "h": 72 },
       "sourceSize": { "w": 72, "h": 72 }
     },
-    "turbine-07": {
+    "turbine-big-07": {
       "frame": { "x": 0, "y": 144, "w": 72, "h": 72 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 72, "h": 72 },
       "sourceSize": { "w": 72, "h": 72 }
     },
-    "turbine-08": {
+    "turbine-big-08": {
       "frame": { "x": 72, "y": 144, "w": 72, "h": 72 },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": { "x": 0, "y": 0, "w": 72, "h": 72 },
       "sourceSize": { "w": 72, "h": 72 }
     },
-    "turbine-09": {
+    "turbine-big-09": {
       "frame": { "x": 144, "y": 144, "w": 72, "h": 72 },
       "rotated": false,
       "trimmed": false,

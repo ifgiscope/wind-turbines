@@ -214,7 +214,7 @@ class MapView {
   renderWindTurbineBigTile(x, y) {
     const textureNumber = 1 + Math.round(this.randomizedTerrain[y][x] * 8);
     this.getTextureTile(x, y).texture =
-      this.textures.windturbines_big[`turbine-0${textureNumber}`];
+      this.textures.windturbines_big[`turbine-big-0${textureNumber}`];
     this.getTextureTile(x, y).visible = true;
   }
 
