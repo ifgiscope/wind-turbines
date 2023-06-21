@@ -13,6 +13,8 @@ class WindTurbinesData extends DataSource {
     this.proximitiesBigWaterRoad = [];
     this.proximitiesSmallResidential = [];
     this.proximitiesBigResidential = [];
+    this.proximitiesSmallWindTurbines = [];
+    this.proximitiesBigWindTurbines = [];
 
     this.wtSmallWaterRoadsDist =
       this.config.goals["distances"]["windTurbineSmall-distance-water-roads"] ||
@@ -31,6 +33,10 @@ class WindTurbinesData extends DataSource {
 
     this.numWaterRoadsTooClose = 0;
     this.numResidentialsTooClose = 0;
+    this.numWindTurbinesTooClose = 0;
+
+    this.amountOfSmallWindTurbines = 0;
+    this.amountOfBigWindTurbines = 0;
 
     this.index = 1; // Default is unhappy
     this.distancesIndex = 5;
@@ -49,14 +55,20 @@ class WindTurbinesData extends DataSource {
     const roadTileId = getTileTypeId(this.config, "road");
     const windTurbineSmallId = getTileTypeId(this.config, "windTurbineSmall");
     const windTurbineBigId = getTileTypeId(this.config, "windTurbineBig");
+
     const distancesWaterRoad = allDistancesToTileType(this.city.map, [
       waterTileId,
       roadTileId,
     ]);
-    //console.log(distancesWaterRoad);
+    console.log(distancesWaterRoad);
 
     const distancesResidential = allDistancesToTileType(this.city.map, [
       residentialId,
+    ]);
+
+    const distancesWindTurbines = allDistancesToTileType(this.city.map, [
+      windTurbineSmallId,
+      windTurbineBigId,
     ]);
     //console.log(distancesResidential);
 
@@ -66,6 +78,7 @@ class WindTurbinesData extends DataSource {
         this.proximitiesSmallWaterRoad.push(distancesWaterRoad[y][x]);
       }
     });
+    console.log(this.proximitiesSmallWaterRoad);
     this.proximitiesBigWaterRoad = [];
     this.city.map.allCells().forEach(([x, y, tile]) => {
       if (tile === windTurbineBigId) {
@@ -85,6 +98,34 @@ class WindTurbinesData extends DataSource {
         this.proximitiesBigResidential.push(distancesResidential[y][x]);
       }
     });
+
+    this.proximitiesSmallWindTurbines = [];
+    this.proximitiesBigWindTurbines = [];
+    this.city.map.allCells().forEach(([x, y, tile]) => {
+      if (tile === windTurbineSmallId) {
+        this.proximitiesSmallWindTurbines.push(distancesWindTurbines[y][x]); // Residential distances are the same for big turbines
+      }
+      if (tile === windTurbineBigId) {
+        this.proximitiesBigWindTurbines.push(distancesWindTurbines[y][x]);
+      }
+    });
+
+    // count how many small wind turbines are part of city
+    this.amountOfSmallWindTurbines = 0;
+    this.city.map.allCells().forEach(([x, y, tile]) => {
+      if (tile === windTurbineSmallId) {
+        this.amountOfSmallWindTurbines += 1; // Residential distances are the same for big turbines
+      }
+    });
+    console.log("small turbines", this.amountOfSmallWindTurbines);
+    // count how many small wind turbines are part of city
+    this.amountOfBigWindTurbines = 0;
+    this.city.map.allCells().forEach(([x, y, tile]) => {
+      if (tile === windTurbineBigId) {
+        this.amountOfBigWindTurbines += 1; // Residential distances are the same for big turbines
+      }
+    });
+    console.log("big turbines", this.amountOfBigWindTurbines);
   }
 
   calculate() {
@@ -101,31 +142,51 @@ class WindTurbinesData extends DataSource {
 
     this.numResidentialsTooClose = 0;
     this.numWaterRoadsTooClose = 0;
+    this.numWindTurbinesTooClose = 0;
 
     this.proximitiesSmallWaterRoad.forEach((distance) => {
-      if (distance < this.wtSmallWaterRoadsDist) {
+      if (distance <= this.wtSmallWaterRoadsDist) {
         this.numWaterRoadsTooClose += 1;
       }
     });
     this.proximitiesBigWaterRoad.forEach((distance) => {
-      if (distance < this.wtBigWaterRoadsDist) {
+      if (distance <= this.wtBigWaterRoadsDist) {
         this.numWaterRoadsTooClose += 1;
       }
     });
 
     this.proximitiesSmallResidential.forEach((distance) => {
-      if (distance < this.wtSmallResidentialsDist) {
+      if (distance <= this.wtSmallResidentialsDist) {
         this.numResidentialsTooClose += 1;
       }
     });
     this.proximitiesBigResidential.forEach((distance) => {
-      if (distance < this.wtBigResidentialsDist) {
+      if (distance <= this.wtBigResidentialsDist) {
         this.numResidentialsTooClose += 1;
+      }
+    });
+
+    this.proximitiesSmallWindTurbines.forEach((distance) => {
+      // Distance between small wind turbines and other wind turbines has to be 2 or more
+      if (distance < this.wtSmallResidentialsDist) {
+        // Distance to residents is same as for wind turbines
+        this.numWindTurbinesTooClose += 1;
+        console.log("small", distance);
+      }
+    });
+    this.proximitiesBigWindTurbines.forEach((distance) => {
+      // Distance between big wind turbines and other wind turbines has to be 3 or more
+      if (distance < this.wtBigResidentialsDist) {
+        // Distance to residents is same as for wind turbines
+        this.numWindTurbinesTooClose += 1;
+        console.log("big", distance);
       }
     });
 
     console.log("this.numResidentialsTooClose", this.numResidentialsTooClose);
     console.log("numWaterRoadsTooClose", this.numWaterRoadsTooClose);
+    console.log("numWindTurbines", this.numWindTurbinesTooClose);
+    console.log(this.stats);
   }
 
   getGoals() {
@@ -134,7 +195,7 @@ class WindTurbinesData extends DataSource {
         id: "wind-turbine-distance-road-water-low",
         category: "distance",
         priority: 1,
-        condition: this.numWaterRoadsTooClose == 0,
+        condition: this.numWaterRoadsTooClose == 0, //this.stats.get("zones-"),
         progress: this.goalProgress(this.numWaterRoadsTooClose, 0),
       },
       {
@@ -143,6 +204,18 @@ class WindTurbinesData extends DataSource {
         priority: 1,
         condition: this.numResidentialsTooClose == 0,
         progress: this.goalProgress(this.numResidentialsTooClose, 0),
+      },
+      {
+        id: "wind-turbine-distance-wind-turbines-low",
+        category: "distance",
+        priority: 1,
+        condition: this.numWindTurbinesTooClose <= 1,
+        //this.amountOfSmallWindTurbines + this.amountOfBigWindTurbines, // Nicht 1, sondern die anzahl der platzierten wind energieanlagen
+        progress: this.goalProgress(
+          this.numWindTurbinesTooClose,
+          1
+          //this.amountOfSmallWindTurbines + this.amountOfBigWindTurbines
+        ),
       },
     ];
   }
