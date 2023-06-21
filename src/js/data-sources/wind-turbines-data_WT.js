@@ -215,6 +215,7 @@ class WindTurbinesData extends DataSource {
         category: "distance",
         priority: 1,
         condition: this.numWindTurbinesTooClose <= 1,
+        // MAYBE A DISTANCE TO NEXT WT FUNCTION HAS TO BE IMPLEMENTED
         //this.amountOfSmallWindTurbines + this.amountOfBigWindTurbines, // Nicht 1, sondern die anzahl der platzierten wind energieanlagen
         progress: this.goalProgress(
           this.numWindTurbinesTooClose,
