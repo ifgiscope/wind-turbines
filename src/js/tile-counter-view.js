@@ -7,8 +7,18 @@ class TileCounterView {
 
     this.$element = $("<div></div>").addClass("tile-counter");
 
-    /*this.computedFieldDefs = [
+    this.computedFieldDefs = [
       {
+        id: "energy-gain",
+        label: "Energy gain",
+        calculate: () => {
+          const turbinesSmall = this.stats.get("zones-windTurbineSmall-count");
+          const turbinesBig = this.stats.get("zones-windTurbineBig-count");
+
+          return (turbinesSmall + turbinesBig * 2).toFixed(2);
+        },
+      },
+      /*{
         id: "road-density",
         label: "Road:Zone ratio",
         calculate: () => {
@@ -31,8 +41,8 @@ class TileCounterView {
             100
           ).toFixed(1)}%)`;
         },
-      },
-    ];*/
+      },*/
+    ];
 
     this.fields = Object.assign(
       Object.fromEntries(
@@ -40,13 +50,13 @@ class TileCounterView {
           id,
           $("<span></span>").addClass("field"),
         ])
-      )
-      /*Object.fromEntries(
+      ),
+      Object.fromEntries(
         this.computedFieldDefs.map((field) => [
           field.id,
           $("<span></span>").addClass("field"),
         ])
-      )*/
+      )
     );
 
     this.$element.append(
@@ -69,7 +79,7 @@ class TileCounterView {
               .append(this.fields[id])
           )
         )
-      /*.append(
+        .append(
           this.computedFieldDefs.map((field) =>
             $("<li></li>")
               .append(
@@ -77,7 +87,7 @@ class TileCounterView {
               )
               .append(this.fields[field.id])
           )
-        )*/
+        )
     );
 
     this.total = this.stats.get("zones-total");
@@ -94,9 +104,9 @@ class TileCounterView {
       );
     });
 
-    /*this.computedFieldDefs.forEach(({ id, calculate }) => {
-      this.fields[id].text(calculate());
-    });*/
+    this.computedFieldDefs.forEach(({ id, calculate }) => {
+      this.fields[id].text(`${calculate()} kWh`);
+    });
   }
 
   /*extraFieldDefs() {

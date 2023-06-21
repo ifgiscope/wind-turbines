@@ -10,7 +10,8 @@ class CitizenRequestViewMgr {
 
     this.minTime = (this.config.citizenRequestView.minTime || 30) * 1000;
     this.maxTime = (this.config.citizenRequestView.maxTime || 90) * 1000;
-    this.cooldownTime = (this.config.citizenRequestView.cooldownTime || 90) * 1000;
+    this.cooldownTime =
+      (this.config.citizenRequestView.cooldownTime || 90) * 1000;
 
     this.inTestMode = false;
     window.testCitizenRequestView = () => this.enterTestMode();
@@ -35,12 +36,13 @@ class CitizenRequestViewMgr {
     if (this.inTestMode) {
       return;
     }
-    const selectedGoals = this.selectElegibleGoals(goals)
-      .slice(0, this.requestCount);
-
+    const selectedGoals = this.selectElegibleGoals(goals).slice(
+      0,
+      this.requestCount
+    );
     // Remove goals that are not selected
     Object.keys(this.shownRequests).forEach((goalId) => {
-      if (!selectedGoals.find(goal => goal.id === goalId)) {
+      if (!selectedGoals.find((goal) => goal.id === goalId)) {
         this.removeRequest(goalId);
       }
     });
@@ -78,7 +80,7 @@ class CitizenRequestViewMgr {
     if (timeSinceShow < this.minTime) {
       return CitizenRequestViewMgr.Timing.UNDER_MIN_TIME;
     }
-    if ((timeSinceShow > cooldownEnter) && (timeSinceShow < cooldownExit)) {
+    if (timeSinceShow > cooldownEnter && timeSinceShow < cooldownExit) {
       return CitizenRequestViewMgr.Timing.IN_COOLDOWN;
     }
     return CitizenRequestViewMgr.Timing.NORMAL;
@@ -87,33 +89,41 @@ class CitizenRequestViewMgr {
   selectElegibleGoals(goals) {
     const interleavedOrder = {};
     const visibilityGroup = {};
-    const goalsPerGroup = Object.fromEntries(Object.keys(this.groups).map(group => [group, 0]));
+    const goalsPerGroup = Object.fromEntries(
+      Object.keys(this.groups).map((group) => [group, 0])
+    );
     const now = Date.now();
 
-    const unmetGoals = goals.filter(goal => goal.condition === false);
+    const unmetGoals = goals.filter((goal) => goal.condition === false);
 
-    unmetGoals.sort((a, b) => (
-      // Sort by "priority, progress DESC"
-      (a.priority - b.priority) || (b.progress - a.progress)
-    )).forEach((goal) => {
-      // Assign each goal a visibility group based on the last time it was shown
-      visibilityGroup[goal.id] = this.getVisibilityGroup(goal, now);
+    unmetGoals
+      .sort(
+        (a, b) =>
+          // Sort by "priority, progress DESC"
+          a.priority - b.priority || b.progress - a.progress
+      )
+      .forEach((goal) => {
+        // Assign each goal a visibility group based on the last time it was shown
+        visibilityGroup[goal.id] = this.getVisibilityGroup(goal, now);
 
-      // Assign each goal an order so they are interleaved per group
-      // (cat1, cat2, cat3, cat1, cat2, cat3, etc..) keeping the same
-      // order they had within each category.
-      const group = (this.config.citizenRequests[goal.id]
-        && this.config.citizenRequests[goal.id].group) || 'others';
-      interleavedOrder[goal.id] = this.groups[group] + goalsPerGroup[group] * this.groups.length;
-      goalsPerGroup[group] += 1;
-    });
+        // Assign each goal an order so they are interleaved per group
+        // (cat1, cat2, cat3, cat1, cat2, cat3, etc..) keeping the same
+        // order they had within each category.
+        const group =
+          (this.config.citizenRequests[goal.id] &&
+            this.config.citizenRequests[goal.id].group) ||
+          "others";
+        interleavedOrder[goal.id] =
+          this.groups[group] + goalsPerGroup[group] * this.groups.length;
+        goalsPerGroup[group] += 1;
+      });
 
-    return unmetGoals
-      .sort((a, b) => (
+    return unmetGoals.sort(
+      (a, b) =>
         // Sort by visible time, then interleaved order
-        (visibilityGroup[a.id] - visibilityGroup[b.id])
-        || (interleavedOrder[a.id] - interleavedOrder[b.id])
-      ));
+        visibilityGroup[a.id] - visibilityGroup[b.id] ||
+        interleavedOrder[a.id] - interleavedOrder[b.id]
+    );
   }
 
   enterTestMode() {
@@ -128,14 +138,14 @@ class CitizenRequestViewMgr {
     };
 
     showOne(0);
-    $(window).on('keydown', (ev) => {
-      if (ev.key === 'ArrowLeft') {
+    $(window).on("keydown", (ev) => {
+      if (ev.key === "ArrowLeft") {
         if (i > 0) {
           i -= 1;
         }
         showOne(i);
-      } else if (ev.key === 'ArrowRight') {
-        if (i < (allRequests.length - 1)) {
+      } else if (ev.key === "ArrowRight") {
+        if (i < allRequests.length - 1) {
           i += 1;
           showOne(i);
         }

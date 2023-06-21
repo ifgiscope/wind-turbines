@@ -12,6 +12,14 @@ goals:
     proximity-near: 3
     # Percentage of residential areas that need to be closer than the threshold (as fraction, 1 = 100%).
     proximity-goal-percentage: 0.75
+  wind-turbines:
+    windTurbineSmall-distance-buffer: 1
+    windTurbineBig-distance-buffer: 2
+  energy:
+    max-energy-level: 1
+    high-energy-level: 0.5
+    med-energy-level: 0.25
+
   #noise:
   # Maximum noise level (in [0,1])
   #max-noise-level: 1
@@ -47,6 +55,8 @@ goals:
   zone-balance:
     # Percentage of zoned areas that should (ideally) be residential
     ideal-residential-percentage: 0.5
+    # Percentage of zoned areas that should (ideally) be residential
+    ideal-windTurbine-percentage: 0.25
     # Percentage of zoned areas that should (ideally) be commercial
     #ideal-commercial-percentage: 0.25
     # Percentage of zoned areas that should (ideally) be industrial

@@ -12,12 +12,10 @@ class GreenSpacesData extends DataSource {
     this.areas = [];
     this.proximities = [];
 
-    this.numGreenSpaces = city.map.allCells().length;
-    //this.numGreenSpaces = 0;
+    this.numGreenSpaces = 0;
     this.numGreenSpacesGoal = this.config.goals["green-spaces"].num || 20;
 
-    //this.largeAreasSum = 0;
-    this.largeAreasSum = this.numGreenSpaces;
+    this.largeAreasSum = 0;
     this.largeAreaThreshold =
       this.config.goals["green-spaces"]["large-spaces-threshold"] || 3;
     this.largeAreaSumGoal =
@@ -33,8 +31,7 @@ class GreenSpacesData extends DataSource {
     this.numMedProximity = 0;
     this.numNearProximity = 0;
 
-    //this.index = 1; // Default is unhappy
-    this.index = 5; // Changed default to happy (index value 5)
+    this.index = 1;
   }
 
   getVariables() {

@@ -87,8 +87,9 @@ CitizenRequestView.tileReferences = {
   W: "water",
   P: "park",
   R: "residential",
-  //C: 'commercial',
-  //I: "industrial",
+  //E: "energy",
+  S: "windTurbineSmall", // only one turbine is required cause we only need the background color of this tile at this point
+  //B: "windTurbineBig",
   X: "road",
 };
 CitizenRequestView.tileRefRegexp = new RegExp(

@@ -46,6 +46,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
       //pollution: 0,
       //noise: 0,
       "green-spaces": 0,
+      "wind-turbines": 0,
     });
 
     // $("#col-3").append(createTitle(config.dashboard.powerUps.title));

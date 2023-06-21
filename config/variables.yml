@@ -23,3 +23,7 @@ variables:
     name:
       de: Freifläche
       en: Green spaces
+  wind-turbines:
+    name:
+      de: Windenergieanlagen
+      en: Wind turbines
