@@ -60,7 +60,6 @@ class WindTurbinesData extends DataSource {
       waterTileId,
       roadTileId,
     ]);
-    console.log(distancesWaterRoad);
 
     const distancesResidential = allDistancesToTileType(this.city.map, [
       residentialId,
@@ -70,7 +69,7 @@ class WindTurbinesData extends DataSource {
       windTurbineSmallId,
       windTurbineBigId,
     ]);
-    //console.log(distancesResidential);
+    console.log("distancesWindTurbines", distancesWindTurbines);
 
     this.proximitiesSmallWaterRoad = [];
     this.city.map.allCells().forEach(([x, y, tile]) => {
@@ -78,7 +77,6 @@ class WindTurbinesData extends DataSource {
         this.proximitiesSmallWaterRoad.push(distancesWaterRoad[y][x]);
       }
     });
-    console.log(this.proximitiesSmallWaterRoad);
     this.proximitiesBigWaterRoad = [];
     this.city.map.allCells().forEach(([x, y, tile]) => {
       if (tile === windTurbineBigId) {
@@ -109,6 +107,14 @@ class WindTurbinesData extends DataSource {
         this.proximitiesBigWindTurbines.push(distancesWindTurbines[y][x]);
       }
     });
+    console.log(
+      "this.proximitiesBigWindTurbines",
+      this.proximitiesBigWindTurbines
+    );
+    console.log(
+      "proximitiesSmallWindTurbines",
+      this.proximitiesSmallWindTurbines
+    );
 
     // count how many small wind turbines are part of city
     this.amountOfSmallWindTurbines = 0;
@@ -186,7 +192,6 @@ class WindTurbinesData extends DataSource {
     console.log("this.numResidentialsTooClose", this.numResidentialsTooClose);
     console.log("numWaterRoadsTooClose", this.numWaterRoadsTooClose);
     console.log("numWindTurbines", this.numWindTurbinesTooClose);
-    console.log(this.stats);
   }
 
   getGoals() {
