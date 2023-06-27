@@ -138,6 +138,7 @@ class WindTurbinesData extends DataSource {
             distancesWindTurbines[y + 1][x + 1] == 2
           )
         ) {
+          console.log("DDDD");
           this.proximitiesSmallWindTurbines.push(distancesWindTurbines[y][x]); // Residential distances are the same for big turbines
         }
       }
@@ -211,6 +212,8 @@ class WindTurbinesData extends DataSource {
     this.numWindTurbinesTooClose =
       this.proximitiesSmallWindTurbines.length +
       this.proximitiesBigWindTurbines.length;
+
+    console.log("numWindTurbinesTooClose", this.numWindTurbinesTooClose);
   }
 
   getGoals() {
