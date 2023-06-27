@@ -50,6 +50,46 @@ class WindTurbinesData extends DataSource {
     };
   }
 
+  /**
+   * distancesArray: array with shape a x b, containing distances from object to others
+   * x: integer value representing the x position
+   * y: integer value representing the y position
+   * buffer: integer value representing a symmetrical buffer around (x,y)
+   * xyWindow: [[integer]] 2D array, representing the values, the window should have, with size [2*buffer+1][2*buffer+2]
+   * return: Boolean (true := no distortion in buffer, false := there is a distortion)
+   */
+  calculateBuffer(distancesArray, x, y, buffer, xyWindow) {
+    if ((xyWindow.length + 1) / 2 - 1 == buffer) {
+      // checks if buffer size and window size are matching
+      for (let i = 0; i < xyWindow.length; i++) {
+        for (let j = 0; j < xyWindow[0].length; j++) {
+          const newX = x - buffer + i;
+          const newY = y - buffer + j;
+          if (
+            newX >= 0 &&
+            newX < distancesArray.length &&
+            newY >= 0 &&
+            newY < distancesArray.length
+          ) {
+            console.log("i", i, "j", j);
+            console.log("new", newX, newY, "old", x, y);
+            console.log(distancesArray[newY][newX], xyWindow[i][j]);
+            if (distancesArray[newY][newX] == xyWindow[i][j]) {
+              continue;
+            } else {
+              return false;
+            }
+          } else {
+            break;
+          }
+        }
+      }
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   calculateProximities() {
     const residentialId = getTileTypeId(this.config, "residential");
     const waterTileId = getTileTypeId(this.config, "water");
@@ -122,6 +162,14 @@ class WindTurbinesData extends DataSource {
           distancesWindTurbines[y + 1][x],
           distancesWindTurbines[y + 1][x + 1]
         );
+        console.log(
+          "new function",
+          this.calculateBuffer(distancesWindTurbines, x, y, 1, [
+            [2, 1, 2],
+            [1, 0, 1],
+            [2, 1, 2],
+          ])
+        );
         if (
           !(
             distancesWindTurbines[y - 1][x - 1] == 2 &&
@@ -178,6 +226,16 @@ class WindTurbinesData extends DataSource {
           distancesWindTurbines[y + 2][x],
           distancesWindTurbines[y + 2][x + 1],
           distancesWindTurbines[y + 2][x + 2]
+        );
+        console.log(
+          "new function",
+          this.calculateBuffer(distancesWindTurbines, x, y, 2, [
+            [4, 3, 2, 3, 4],
+            [3, 2, 1, 2, 3],
+            [2, 1, 0, 2, 1],
+            [3, 2, 1, 2, 3],
+            [4, 3, 2, 3, 4],
+          ])
         );
         if (
           !(
