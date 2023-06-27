@@ -126,12 +126,12 @@ class WindTurbinesData extends DataSource {
             distancesWindTurbines[y - 1][x - 1] == 2 &&
             distancesWindTurbines[y - 1][x] == 1 &&
             distancesWindTurbines[y - 1][x + 1] == 2
-          ) &&
+          ) ||
           !(
             distancesWindTurbines[y][x - 1] == 1 &&
             distancesWindTurbines[y][x] == 0 &&
             distancesWindTurbines[y][x + 1] == 1
-          ) &&
+          ) ||
           !(
             distancesWindTurbines[y + 1][x - 1] == 2 &&
             distancesWindTurbines[y + 1][x] == 1 &&
@@ -142,14 +142,88 @@ class WindTurbinesData extends DataSource {
           this.proximitiesSmallWindTurbines.push(distancesWindTurbines[y][x]); // Residential distances are the same for big turbines
         }
       }
-      /*if (tile === windTurbineBigId) {
+      if (tile === windTurbineBigId) {
+        console.log(
+          distancesWindTurbines[y - 2][x - 2],
+          distancesWindTurbines[y - 2][x - 1],
+          distancesWindTurbines[y - 2][x],
+          distancesWindTurbines[y - 2][x + 1],
+          distancesWindTurbines[y - 2][x + 2]
+        );
+        console.log(
+          distancesWindTurbines[y - 1][x - 2],
+          distancesWindTurbines[y - 1][x - 1],
+          distancesWindTurbines[y - 1][x],
+          distancesWindTurbines[y - 1][x + 1],
+          distancesWindTurbines[y - 1][x + 2]
+        );
+        console.log(
+          distancesWindTurbines[y][x - 2],
+          distancesWindTurbines[y][x - 1],
+          distancesWindTurbines[y][x],
+          distancesWindTurbines[y][x + 1],
+          distancesWindTurbines[y][x + 2]
+        );
+        console.log(
+          distancesWindTurbines[y + 1][x - 2],
+          distancesWindTurbines[y + 1][x - 1],
+          distancesWindTurbines[y + 1][x],
+          distancesWindTurbines[y + 1][x + 1],
+          distancesWindTurbines[y + 1][x + 2]
+        );
+        console.log(
+          distancesWindTurbines[y + 2][x - 2],
+          distancesWindTurbines[y + 2][x - 1],
+          distancesWindTurbines[y + 2][x],
+          distancesWindTurbines[y + 2][x + 1],
+          distancesWindTurbines[y + 2][x + 2]
+        );
+        if (
+          !(
+            distancesWindTurbines[y - 2][x - 2] == 4 &&
+            distancesWindTurbines[y - 2][x - 1] == 3 &&
+            distancesWindTurbines[y - 2][x] == 2 &&
+            distancesWindTurbines[y - 2][x + 1] == 3 &&
+            distancesWindTurbines[y - 2][x + 2] == 4
+          ) ||
+          !(
+            distancesWindTurbines[y - 1][x - 2] == 3 &&
+            distancesWindTurbines[y - 1][x - 1] == 2 &&
+            distancesWindTurbines[y - 1][x] == 1 &&
+            distancesWindTurbines[y - 1][x + 1] == 2 &&
+            distancesWindTurbines[y - 1][x + 2] == 3
+          ) ||
+          !(
+            distancesWindTurbines[y][x - 2] == 2 &&
+            distancesWindTurbines[y][x - 1] == 1 &&
+            distancesWindTurbines[y][x] == 0 &&
+            distancesWindTurbines[y][x + 1] == 1 &&
+            distancesWindTurbines[y][x + 2] == 2
+          ) ||
+          !(
+            distancesWindTurbines[y + 1][x - 2] == 3 &&
+            distancesWindTurbines[y + 1][x - 1] == 2 &&
+            distancesWindTurbines[y + 1][x] == 1 &&
+            distancesWindTurbines[y + 1][x + 1] == 2 &&
+            distancesWindTurbines[y + 1][x + 2] == 3
+          ) ||
+          !(
+            distancesWindTurbines[y + 2][x - 2] == 4 &&
+            distancesWindTurbines[y + 2][x - 1] == 3 &&
+            distancesWindTurbines[y + 2][x] == 2 &&
+            distancesWindTurbines[y + 2][x + 1] == 3 &&
+            distancesWindTurbines[y + 2][x + 2] == 4
+          )
+        )
+          console.log("big");
         this.proximitiesBigWindTurbines.push(distancesWindTurbines[y][x]);
-      }*/
+      }
     });
     console.log(
       "proximitiesSmallWindTurbines",
       this.proximitiesSmallWindTurbines
     );
+    console.log("proximitiesBigWindTurbines", this.proximitiesBigWindTurbines);
     /*console.log(
       "this.proximitiesBigWindTurbines",
       this.proximitiesBigWindTurbines
