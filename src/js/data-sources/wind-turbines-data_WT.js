@@ -37,6 +37,7 @@ class WindTurbinesData extends DataSource {
 
     this.amountOfSmallWindTurbines = 0;
     this.amountOfBigWindTurbines = 0;
+    this.amountOfWindTurbines = 0;
 
     this.index = 1; // Default is unhappy
     this.distancesIndex = 5;
@@ -214,9 +215,10 @@ class WindTurbinesData extends DataSource {
             distancesWindTurbines[y + 2][x + 1] == 3 &&
             distancesWindTurbines[y + 2][x + 2] == 4
           )
-        )
+        ) {
           console.log("big");
-        this.proximitiesBigWindTurbines.push(distancesWindTurbines[y][x]);
+          this.proximitiesBigWindTurbines.push(distancesWindTurbines[y][x]);
+        }
       }
     });
     console.log(
@@ -234,20 +236,22 @@ class WindTurbinesData extends DataSource {
     );*/
 
     // count how many small wind turbines are part of city
-    /*this.amountOfSmallWindTurbines = 0;
+    this.amountOfSmallWindTurbines = 0;
     this.city.map.allCells().forEach(([x, y, tile]) => {
       if (tile === windTurbineSmallId) {
         this.amountOfSmallWindTurbines += 1; // Residential distances are the same for big turbines
       }
-    });*/
+    });
     //console.log("small turbines", this.amountOfSmallWindTurbines);
     // count how many small wind turbines are part of city
-    /*this.amountOfBigWindTurbines = 0;
+    this.amountOfBigWindTurbines = 0;
     this.city.map.allCells().forEach(([x, y, tile]) => {
       if (tile === windTurbineBigId) {
         this.amountOfBigWindTurbines += 1; // Residential distances are the same for big turbines
       }
-    });*/
+    });
+    this.amountOfWindTurbines =
+      this.amountOfSmallWindTurbines + this.amountOfBigWindTurbines;
     //console.log("big turbines", this.amountOfBigWindTurbines);
   }
 
@@ -285,7 +289,8 @@ class WindTurbinesData extends DataSource {
 
     this.numWindTurbinesTooClose =
       this.proximitiesSmallWindTurbines.length +
-      this.proximitiesBigWindTurbines.length;
+      this.proximitiesBigWindTurbines.length; // -
+    //this.amountOfWindTurbines;
 
     console.log("numWindTurbinesTooClose", this.numWindTurbinesTooClose);
   }
