@@ -59,7 +59,6 @@ class WindTurbinesData extends DataSource {
    * return: Boolean (true := no distortion in buffer, false := there is a distortion)
    */
   calculateBuffer(distancesArray, x, y, buffer, xyWindow) {
-    console.log("x", x, ", y", y);
     if ((xyWindow.length + 1) / 2 - 1 == buffer) {
       // checks if buffer size and window size are matching
       for (let i = 0; i < xyWindow.length; i++) {
@@ -109,7 +108,6 @@ class WindTurbinesData extends DataSource {
       windTurbineSmallId,
       windTurbineBigId,
     ]);
-    //console.log("distancesWindTurbines", distancesWindTurbines);
 
     // Distance between small wind turbines and water / roads
     this.proximitiesSmallWaterRoad = [];
@@ -206,8 +204,6 @@ class WindTurbinesData extends DataSource {
     ) {
       this.numWindTurbinesTooClose = true;
     }
-
-    //console.log("numWindTurbinesTooClose", this.numWindTurbinesTooClose);
   }
 
   getGoals() {
@@ -230,8 +226,8 @@ class WindTurbinesData extends DataSource {
         id: "wind-turbine-distance-wind-turbines-low",
         category: "distance",
         priority: 1,
-        condition: this.numWindTurbinesTooClose == true,
-        progress: this.goalProgress(this.numWindTurbinesTooClose, true),
+        condition: this.numWindTurbinesTooClose == false,
+        progress: this.goalProgress(this.numWindTurbinesTooClose, false),
       },
     ];
   }

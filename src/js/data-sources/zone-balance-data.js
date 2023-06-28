@@ -160,38 +160,13 @@ class ZoneBalanceData extends DataSource {
         category: "zone-balance",
         priority: 1,
         condition:
-          /*this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 >=
-            this.underDevThreshold.windTurbine &&*/
-          this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 >
+          this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 >=
           this.amount.residential,
         progress: this.goalProgress(
           1 + this.difference.windTurbine,
           1 - this.acceptablePctDiff
         ),
       },
-      /*{
-        id: "zone-balance-wS-low",
-        category: "zone-balance",
-        priority: 1,
-        condition:
-          this.amount.windTurbineSmall >=
-          this.underDevThreshold.windTurbineSmall,
-        progress: this.goalProgress(
-          1 + this.difference.windTurbineSmall,
-          1 - this.acceptablePctDiff
-        ),
-      },
-      {
-        id: "zone-balance-wB-low",
-        category: "zone-balance",
-        priority: 1,
-        condition:
-          this.amount.windTurbineBig >= this.underDevThreshold.windTurbineBig,
-        progress: this.goalProgress(
-          1 + this.difference.windTurbineBig,
-          1 - this.acceptablePctDiff
-        ),
-      },*/
       /*{
         id: "zone-balance-i-low",
         category: "zone-balance",
@@ -224,8 +199,6 @@ class ZoneBalanceData extends DataSource {
         category: "zone-balance",
         priority: 2,
         condition:
-          /*this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 <=
-            this.overDevThreshold.windTurbine &&*/
           this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 <=
           this.amount.residential,
         progress: this.goalProgress(
@@ -233,29 +206,6 @@ class ZoneBalanceData extends DataSource {
           1 - this.acceptablePctDiff
         ),
       },
-      /*{
-        id: "zone-balance-wS-high",
-        category: "zone-balance",
-        priority: 2,
-        condition:
-          this.amount.windTurbineSmall <=
-          this.overDevThreshold.windTurbineSmall,
-        progress: this.goalProgress(
-          1 - this.difference.windTurbineSmall,
-          1 - this.acceptablePctDiff
-        ),
-      },
-      {
-        id: "zone-balance-wB-high",
-        category: "zone-balance",
-        priority: 2,
-        condition:
-          this.amount.windTurbineBig <= this.overDevThreshold.windTurbineBig,
-        progress: this.goalProgress(
-          1 - this.difference.windTurbineBig,
-          1 - this.acceptablePctDiff
-        ),
-      },*/
       /*{
         id: "zone-balance-i-high",
         category: "zone-balance",
