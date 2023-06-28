@@ -152,18 +152,6 @@ class WindTurbinesData extends DataSource {
             [1, 1, 1],
           ])
         );
-        /*if (this.proximitiesSmallWindTurbines == false) {
-          console.log(
-            "this.proximitiesSmallWindTurbines",
-            this.proximitiesSmallWindTurbines
-          );
-          console.log("now leave");
-          return;
-        }
-        console.log(
-          "this.proximitiesSmallWindTurbines after",
-          this.proximitiesSmallWindTurbines
-        );*/
       }
 
       if (tile === windTurbineBigId) {
@@ -176,14 +164,6 @@ class WindTurbinesData extends DataSource {
             [1, 1, 1, 1, 1],
           ])
         );
-        /*if (this.proximitiesBigWindTurbines == false) {
-          console.log(
-            "this.proximitiesBigWindTurbines",
-            this.proximitiesBigWindTurbines
-          );
-          console.log("now leave");
-          return;
-        }*/
       }
     });
   }
@@ -226,13 +206,8 @@ class WindTurbinesData extends DataSource {
     ) {
       this.numWindTurbinesTooClose = true;
     }
-    /*this.numWindTurbinesTooClose =
-      this.proximitiesSmallWindTurbines == false ||
-      this.proximitiesBigWindTurbines == false
-        ? false
-        : true;*/
 
-    console.log("numWindTurbinesTooClose", this.numWindTurbinesTooClose);
+    //console.log("numWindTurbinesTooClose", this.numWindTurbinesTooClose);
   }
 
   getGoals() {
