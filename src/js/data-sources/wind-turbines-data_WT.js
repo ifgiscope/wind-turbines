@@ -13,8 +13,8 @@ class WindTurbinesData extends DataSource {
     this.proximitiesBigWaterRoad = [];
     this.proximitiesSmallResidential = [];
     this.proximitiesBigResidential = [];
-    this.proximitiesSmallWindTurbines = [];
-    this.proximitiesBigWindTurbines = [];
+    this.proximitiesSmallWindTurbines = 0;
+    this.proximitiesBigWindTurbines = 0;
 
     this.wtSmallWaterRoadsDist =
       this.config.goals["distances"]["windTurbineSmall-distance-water-roads"] ||
@@ -71,10 +71,7 @@ class WindTurbinesData extends DataSource {
             newY >= 0 &&
             newY < distancesArray.length
           ) {
-            console.log("i", i, "j", j);
-            console.log("new", newX, newY, "old", x, y);
-            console.log(distancesArray[newY][newX], xyWindow[i][j]);
-            if (distancesArray[newY][newX] == xyWindow[i][j]) {
+            if (distancesArray[newY][newX] >= xyWindow[i][j]) {
               continue;
             } else {
               return false;
@@ -143,11 +140,11 @@ class WindTurbinesData extends DataSource {
       }
     });
 
-    this.proximitiesSmallWindTurbines = [];
-    this.proximitiesBigWindTurbines = [];
+    this.proximitiesSmallWindTurbines = true;
+    this.proximitiesBigWindTurbines = true;
     this.city.map.allCells().forEach(([x, y, tile]) => {
       if (tile === windTurbineSmallId) {
-        console.log(
+        /*console.log(
           distancesWindTurbines[y - 1][x - 1],
           distancesWindTurbines[y - 1][x],
           distancesWindTurbines[y - 1][x + 1]
@@ -163,36 +160,27 @@ class WindTurbinesData extends DataSource {
           distancesWindTurbines[y + 1][x + 1]
         );
         console.log(
-          "new function",
+          "proximitiesSmallWindTurbines",
           this.calculateBuffer(distancesWindTurbines, x, y, 1, [
-            [2, 1, 2],
+            [1, 1, 1],
             [1, 0, 1],
-            [2, 1, 2],
+            [1, 1, 1],
           ])
+        );*/
+        this.proximitiesSmallWindTurbines = this.calculateBuffer(
+          distancesWindTurbines,
+          x,
+          y,
+          1,
+          [
+            [1, 1, 1],
+            [1, 0, 1],
+            [1, 1, 1],
+          ]
         );
-        if (
-          !(
-            distancesWindTurbines[y - 1][x - 1] == 2 &&
-            distancesWindTurbines[y - 1][x] == 1 &&
-            distancesWindTurbines[y - 1][x + 1] == 2
-          ) ||
-          !(
-            distancesWindTurbines[y][x - 1] == 1 &&
-            distancesWindTurbines[y][x] == 0 &&
-            distancesWindTurbines[y][x + 1] == 1
-          ) ||
-          !(
-            distancesWindTurbines[y + 1][x - 1] == 2 &&
-            distancesWindTurbines[y + 1][x] == 1 &&
-            distancesWindTurbines[y + 1][x + 1] == 2
-          )
-        ) {
-          console.log("DDDD");
-          this.proximitiesSmallWindTurbines.push(distancesWindTurbines[y][x]); // Residential distances are the same for big turbines
-        }
       }
       if (tile === windTurbineBigId) {
-        console.log(
+        /*console.log(
           distancesWindTurbines[y - 2][x - 2],
           distancesWindTurbines[y - 2][x - 1],
           distancesWindTurbines[y - 2][x],
@@ -228,89 +216,30 @@ class WindTurbinesData extends DataSource {
           distancesWindTurbines[y + 2][x + 2]
         );
         console.log(
-          "new function",
+          "proximitiesBigWindTurbines",
           this.calculateBuffer(distancesWindTurbines, x, y, 2, [
-            [4, 3, 2, 3, 4],
-            [3, 2, 1, 2, 3],
-            [2, 1, 0, 2, 1],
-            [3, 2, 1, 2, 3],
-            [4, 3, 2, 3, 4],
+            [1, 1, 1, 1, 1],
+            [1, 2, 1, 2, 1],
+            [1, 1, 0, 1, 1],
+            [1, 2, 1, 2, 1],
+            [1, 1, 1, 1, 1],
           ])
+        );*/
+        this.proximitiesBigWindTurbines = this.calculateBuffer(
+          distancesWindTurbines,
+          x,
+          y,
+          2,
+          [
+            [1, 1, 1, 1, 1],
+            [1, 2, 1, 2, 1],
+            [1, 1, 0, 1, 1],
+            [1, 2, 1, 2, 1],
+            [1, 1, 1, 1, 1],
+          ]
         );
-        if (
-          !(
-            distancesWindTurbines[y - 2][x - 2] == 4 &&
-            distancesWindTurbines[y - 2][x - 1] == 3 &&
-            distancesWindTurbines[y - 2][x] == 2 &&
-            distancesWindTurbines[y - 2][x + 1] == 3 &&
-            distancesWindTurbines[y - 2][x + 2] == 4
-          ) ||
-          !(
-            distancesWindTurbines[y - 1][x - 2] == 3 &&
-            distancesWindTurbines[y - 1][x - 1] == 2 &&
-            distancesWindTurbines[y - 1][x] == 1 &&
-            distancesWindTurbines[y - 1][x + 1] == 2 &&
-            distancesWindTurbines[y - 1][x + 2] == 3
-          ) ||
-          !(
-            distancesWindTurbines[y][x - 2] == 2 &&
-            distancesWindTurbines[y][x - 1] == 1 &&
-            distancesWindTurbines[y][x] == 0 &&
-            distancesWindTurbines[y][x + 1] == 1 &&
-            distancesWindTurbines[y][x + 2] == 2
-          ) ||
-          !(
-            distancesWindTurbines[y + 1][x - 2] == 3 &&
-            distancesWindTurbines[y + 1][x - 1] == 2 &&
-            distancesWindTurbines[y + 1][x] == 1 &&
-            distancesWindTurbines[y + 1][x + 1] == 2 &&
-            distancesWindTurbines[y + 1][x + 2] == 3
-          ) ||
-          !(
-            distancesWindTurbines[y + 2][x - 2] == 4 &&
-            distancesWindTurbines[y + 2][x - 1] == 3 &&
-            distancesWindTurbines[y + 2][x] == 2 &&
-            distancesWindTurbines[y + 2][x + 1] == 3 &&
-            distancesWindTurbines[y + 2][x + 2] == 4
-          )
-        ) {
-          console.log("big");
-          this.proximitiesBigWindTurbines.push(distancesWindTurbines[y][x]);
-        }
       }
     });
-    console.log(
-      "proximitiesSmallWindTurbines",
-      this.proximitiesSmallWindTurbines
-    );
-    console.log("proximitiesBigWindTurbines", this.proximitiesBigWindTurbines);
-    /*console.log(
-      "this.proximitiesBigWindTurbines",
-      this.proximitiesBigWindTurbines
-    );
-    console.log(
-      "proximitiesSmallWindTurbines",
-      this.proximitiesSmallWindTurbines
-    );*/
-
-    // count how many small wind turbines are part of city
-    this.amountOfSmallWindTurbines = 0;
-    this.city.map.allCells().forEach(([x, y, tile]) => {
-      if (tile === windTurbineSmallId) {
-        this.amountOfSmallWindTurbines += 1; // Residential distances are the same for big turbines
-      }
-    });
-    //console.log("small turbines", this.amountOfSmallWindTurbines);
-    // count how many small wind turbines are part of city
-    this.amountOfBigWindTurbines = 0;
-    this.city.map.allCells().forEach(([x, y, tile]) => {
-      if (tile === windTurbineBigId) {
-        this.amountOfBigWindTurbines += 1; // Residential distances are the same for big turbines
-      }
-    });
-    this.amountOfWindTurbines =
-      this.amountOfSmallWindTurbines + this.amountOfBigWindTurbines;
-    //console.log("big turbines", this.amountOfBigWindTurbines);
   }
 
   calculate() {
@@ -321,7 +250,7 @@ class WindTurbinesData extends DataSource {
   calculateIndex() {
     this.numResidentialsTooClose = 0;
     this.numWaterRoadsTooClose = 0;
-    this.numWindTurbinesTooClose = 0;
+    this.numWindTurbinesTooClose = true;
 
     this.proximitiesSmallWaterRoad.forEach((distance) => {
       if (distance <= this.wtSmallWaterRoadsDist) {
@@ -344,10 +273,21 @@ class WindTurbinesData extends DataSource {
         this.numResidentialsTooClose += 1;
       }
     });
-
+    console.log(
+      "this.proximitiesSmallWindTurbines",
+      this.proximitiesSmallWindTurbines
+    );
+    console.log(
+      "this.proximitiesBigWindTurbines",
+      this.proximitiesBigWindTurbines
+    );
     this.numWindTurbinesTooClose =
-      this.proximitiesSmallWindTurbines.length +
-      this.proximitiesBigWindTurbines.length; // -
+      this.proximitiesSmallWindTurbines == false ||
+      this.proximitiesBigWindTurbines == false
+        ? false
+        : true;
+    //this.proximitiesSmallWindTurbines.length +
+    //this.proximitiesBigWindTurbines.length; // -
     //this.amountOfWindTurbines;
 
     console.log("numWindTurbinesTooClose", this.numWindTurbinesTooClose);
@@ -373,15 +313,8 @@ class WindTurbinesData extends DataSource {
         id: "wind-turbine-distance-wind-turbines-low",
         category: "distance",
         priority: 1,
-        condition: this.numWindTurbinesTooClose == 0,
-        //this.numWindTurbinesTooClose <= 1,
-        // MAYBE A DISTANCE TO NEXT WT FUNCTION HAS TO BE IMPLEMENTED
-        //this.amountOfSmallWindTurbines + this.amountOfBigWindTurbines, // Nicht 1, sondern die anzahl der platzierten wind energieanlagen
-        progress: this.goalProgress(
-          this.numWindTurbinesTooClose,
-          0
-          //this.amountOfSmallWindTurbines + this.amountOfBigWindTurbines
-        ),
+        condition: this.numWindTurbinesTooClose == true,
+        progress: this.goalProgress(this.numWindTurbinesTooClose, true),
       },
     ];
   }
