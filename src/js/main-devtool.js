@@ -267,7 +267,8 @@ cfgLoader
           if (indexesCooldownTimer === null) {
             variableRankListView.setValues({
               "green-spaces": stats.get("green-spaces-index"),
-              //"wind-turbines": stats.get("wind-turbines-index"),
+              "wind-turbines": stats.get("wind-turbines-index"),
+              distances: stats.get("distances-index"),
               //pollution: stats.get("pollution-index"),
               //noise: stats.get("noise-index"),
               //"travel-times": stats.get("travel-times-index"),

@@ -27,3 +27,7 @@ variables:
     name:
       de: Windenergieanlagen
       en: Wind turbines
+  distances:
+    name:
+      de: Abstände
+      en: Distances

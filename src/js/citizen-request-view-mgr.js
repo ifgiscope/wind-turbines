@@ -36,10 +36,11 @@ class CitizenRequestViewMgr {
     if (this.inTestMode) {
       return;
     }
-    const selectedGoals = this.selectElegibleGoals(goals).slice(
+    // We do not want the amount of requests to be restricted...
+    const selectedGoals = this.selectElegibleGoals(goals); /*.slice(
       0,
       this.requestCount
-    );
+    );*/
     // Remove goals that are not selected
     Object.keys(this.shownRequests).forEach((goalId) => {
       if (!selectedGoals.find((goal) => goal.id === goalId)) {
@@ -130,6 +131,7 @@ class CitizenRequestViewMgr {
     this.inTestMode = true;
     const allRequests = Object.keys(this.config.citizenRequests);
     let i = 0;
+
     const showOne = (index) => {
       Object.keys(this.shownRequests).forEach((goalId) => {
         this.removeRequest(goalId);
