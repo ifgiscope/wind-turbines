@@ -38,7 +38,7 @@ class MapEditorPalette {
 
     this.buttons.push($('<div class="separator"></div>'));
 
-    this.toolButtons = MapEditorPalette.Tools.map((tool) =>
+    /*this.toolButtons = MapEditorPalette.Tools.map((tool) =>
       $("<button></button>")
         .attr({
           type: "button",
@@ -64,7 +64,7 @@ class MapEditorPalette {
 
     this.buttons.push(...this.toolButtons);
 
-    this.buttons.push($('<div class="separator"></div>'));
+    this.buttons.push($('<div class="separator"></div>'));*/
 
     const actionButtons = MapEditorPalette.Actions.map((action) =>
       $("<button></button>")
@@ -118,11 +118,11 @@ MapEditorPalette.Actions = [
 ];
 
 MapEditorPalette.Tools = [
-  {
+  /*{
     id: "measureDistance",
     title: "Measure distance",
     icon: "static/fa/ruler-horizontal-solid.svg",
-  },
+  },+7
   /*{
     id: "showPollution",
     title: "Show pollution",
