@@ -124,7 +124,8 @@ class MapEditor {
           }
         },
       },
-      measureDistance: {
+      // Only usable when using travelTime // For this usecase not usable
+      /*measureDistance: {
         start: () => {
           this.mapView.setInspectCursor();
           this.textOverlay.clear();
@@ -134,10 +135,10 @@ class MapEditor {
           this.textOverlay.hide();
         },
         action: ([startX, startY]) => {
-          /*const data = this.travelTimeCalculator.travelTimes(
+          const data = this.travelTimeCalculator.travelTimes(
             this.mapView.city.map,
             [startX, startY]
-          );*/
+          );
           this.textOverlay.display(data);
 
           const residentalId = getTileTypeId(config, "residential");
@@ -149,7 +150,7 @@ class MapEditor {
               tile === residentalId ||
               tile === windTurbineSmallId ||
               tile === windTurbineBigId
-                ? /*|| tile === commercialId || tile === industrialId*/
+                ? || tile === commercialId || tile === industrialId
                   value
                 : null;
           });
@@ -159,7 +160,7 @@ class MapEditor {
             values: Array2D.flatten(data).filter((v) => v !== null),
           });
         },
-      },
+      },*/
       /*showPollution: {
         start: () => {
           this.mapView.setInspectCursor();
