@@ -41,13 +41,11 @@ class WindTurbinesData extends DataSource {
     this.amountOfBigWindTurbines = 0;
     this.amountOfWindTurbines = 0;
 
-    this.turbinesIndex = 1; // Default is unhappy
     this.distancesIndex = 5;
   }
 
   getVariables() {
     return {
-      "wind-turbines-index": () => this.turbinesIndex,
       "distances-index": () => this.distancesIndex,
     };
   }
@@ -100,7 +98,6 @@ class WindTurbinesData extends DataSource {
       waterTileId,
       roadTileId,
     ]);
-    console.log("distancesWaterRoad", distancesWaterRoad);
 
     const distancesResidential = allDistancesToTileType(this.city.map, [
       residentialId,
@@ -258,20 +255,7 @@ class WindTurbinesData extends DataSource {
       this.numWindTurbinesTooClose = true;
     }
 
-    console.log(
-      "this.numResidentialsTooCloseWithGoodwill",
-      this.numResidentialsTooCloseWithGoodwill
-    );
-    console.log("this.numResidentialsTooClose", this.numResidentialsTooClose);
-    console.log(
-      "this.numWaterRoadsTooCloseWithGoodwill",
-      this.numWaterRoadsTooCloseWithGoodwill
-    );
-    console.log("this.numWaterRoadsTooClose", this.numWaterRoadsTooClose);
-    console.log("this.numWindTurbinesTooClose", this.numWindTurbinesTooClose);
     // 5 := best; 3 := neutral; 1 := worst; 0 := neutral
-
-    //console.log("1 this.distancesIndex", this.distancesIndex);
     this.distancesIndex =
       5 -
       this.numResidentialsTooCloseWithGoodwill -
@@ -279,12 +263,8 @@ class WindTurbinesData extends DataSource {
       (this.numResidentialsTooClose > 0 ? 4 : 0) -
       (this.numWaterRoadsTooClose > 0 ? 4 : 0) -
       (this.numWindTurbinesTooClose == true ? 4 : 0);
-    //console.log("2 this.distancesIndex", this.distancesIndex);
     // In case the index value falls below 1, it has to be corrected to 1 because 0 is neutral, 1 ist worst
     this.distancesIndex = this.distancesIndex <= 0 ? 1 : this.distancesIndex;
-    //console.log("3 this.distancesIndex", this.distancesIndex);
-
-    this.turbinesIndex = 2;
   }
 
   getGoals() {
