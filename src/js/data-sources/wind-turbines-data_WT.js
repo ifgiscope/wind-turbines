@@ -215,6 +215,7 @@ class WindTurbinesData extends DataSource {
           this.numWaterRoadsTooClose += 1;
         }
       }
+      counter += 1;
     });
 
     this.proximitiesSmallResidential.forEach((distance) => {
@@ -256,14 +257,32 @@ class WindTurbinesData extends DataSource {
     ) {
       this.numWindTurbinesTooClose = true;
     }
+
+    console.log(
+      "this.numResidentialsTooCloseWithGoodwill",
+      this.numResidentialsTooCloseWithGoodwill
+    );
+    console.log("this.numResidentialsTooClose", this.numResidentialsTooClose);
+    console.log(
+      "this.numWaterRoadsTooCloseWithGoodwill",
+      this.numWaterRoadsTooCloseWithGoodwill
+    );
+    console.log("this.numWaterRoadsTooClose", this.numWaterRoadsTooClose);
+    console.log("this.numWindTurbinesTooClose", this.numWindTurbinesTooClose);
     // 5 := best; 3 := neutral; 1 := worst; 0 := neutral
+
+    //console.log("1 this.distancesIndex", this.distancesIndex);
     this.distancesIndex =
       5 -
       this.numResidentialsTooCloseWithGoodwill -
       this.numWaterRoadsTooCloseWithGoodwill -
+      (this.numResidentialsTooClose > 0 ? 4 : 0) -
+      (this.numWaterRoadsTooClose > 0 ? 4 : 0) -
       (this.numWindTurbinesTooClose == true ? 4 : 0);
+    //console.log("2 this.distancesIndex", this.distancesIndex);
     // In case the index value falls below 1, it has to be corrected to 1 because 0 is neutral, 1 ist worst
     this.distancesIndex = this.distancesIndex <= 0 ? 1 : this.distancesIndex;
+    //console.log("3 this.distancesIndex", this.distancesIndex);
 
     this.turbinesIndex = 2;
   }

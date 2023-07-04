@@ -119,8 +119,8 @@ class GreenSpacesData extends DataSource {
         ? 1
         : 0);
     // ----------------------------------------------------------------------
-    console.log("num green spaces", this.numGreenSpaces);
-    console.log("index", this.index);
+    //console.log("num green spaces", this.numGreenSpaces);
+    //console.log("index", this.index);
     // ----------------------------------------------------------------------
   }
 

@@ -15,7 +15,6 @@ class IndexView {
           ]),
         this.$valueElement,
       ]);
-    console.log(this.$element);
   }
 
   setValue(value) {

@@ -190,7 +190,6 @@ cfgLoader
               "wind-turbines": stats.get("wind-turbines-index"),
               distances: stats.get("distances-index"),
             });
-            console.log("goals", stats.getGoals());
             goalDebugView.setValues(stats.getGoals());
             indexesDirty = false;
             indexesCooldownTimer = setTimeout(() => {
