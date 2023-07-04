@@ -1,7 +1,7 @@
 goals:
   green-spaces:
     # Number of green spaces a city should have (at least)
-    num: 20
+    num: 50
     # Minimum number of tiles a green space needs to have to qualify as "large"
     large-spaces-threshold: 3
     # Total area of large green spaces a city should have (at least)

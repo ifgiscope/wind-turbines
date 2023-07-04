@@ -32,20 +32,22 @@ class WindTurbinesData extends DataSource {
       3;
 
     this.numWaterRoadsTooClose = 0;
+    this.numWaterRoadsTooCloseWithGoodwill = 0;
     this.numResidentialsTooClose = 0;
+    this.numResidentialsTooCloseWithGoodwill = 0;
     this.numWindTurbinesTooClose = 0;
 
     this.amountOfSmallWindTurbines = 0;
     this.amountOfBigWindTurbines = 0;
     this.amountOfWindTurbines = 0;
 
-    this.index = 1; // Default is unhappy
+    this.turbinesIndex = 1; // Default is unhappy
     this.distancesIndex = 5;
   }
 
   getVariables() {
     return {
-      "wind-turbines-index": () => this.index,
+      "wind-turbines-index": () => this.turbinesIndex,
       "distances-index": () => this.distancesIndex,
     };
   }
@@ -98,6 +100,7 @@ class WindTurbinesData extends DataSource {
       waterTileId,
       roadTileId,
     ]);
+    console.log("distancesWaterRoad", distancesWaterRoad);
 
     const distancesResidential = allDistancesToTileType(this.city.map, [
       residentialId,
@@ -172,29 +175,78 @@ class WindTurbinesData extends DataSource {
   }
 
   calculateIndex() {
+    this.numResidentialsTooCloseWithGoodwill = 0;
     this.numResidentialsTooClose = 0;
+    this.numWaterRoadsTooCloseWithGoodwill = 0;
     this.numWaterRoadsTooClose = 0;
     this.numWindTurbinesTooClose = false;
 
     this.proximitiesSmallWaterRoad.forEach((distance) => {
       if (distance <= this.wtSmallWaterRoadsDist) {
+        // distance <= 1
+        if (this.wtSmallWaterRoadsDist > 1) {
+          // FALSE
+          if (distance == this.wtSmallWaterRoadsDist) {
+            // distance == 1
+            this.numWaterRoadsTooCloseWithGoodwill += 1;
+          } else {
+            // distance < 2
+            this.numWaterRoadsTooClose += 1;
+          }
+        } else {
+          this.numWaterRoadsTooClose += 1;
+        }
         this.numWaterRoadsTooClose += 1;
       }
     });
+    // Goal: > 2; Goodwill: == 2; Bad: <= 2-1
     this.proximitiesBigWaterRoad.forEach((distance) => {
       if (distance <= this.wtBigWaterRoadsDist) {
-        this.numWaterRoadsTooClose += 1;
+        // distance <= 2
+        if (this.wtBigWaterRoadsDist > 1) {
+          if (distance == this.wtBigWaterRoadsDist) {
+            // distance == 2
+            this.numWaterRoadsTooCloseWithGoodwill += 1;
+          } else {
+            // distance < 2
+            this.numWaterRoadsTooClose += 1;
+          }
+        } else {
+          this.numWaterRoadsTooClose += 1;
+        }
       }
     });
 
     this.proximitiesSmallResidential.forEach((distance) => {
       if (distance <= this.wtSmallResidentialsDist) {
-        this.numResidentialsTooClose += 1;
+        // distance <= 2
+        if (this.wtSmallResidentialsDist > 1) {
+          if (distance == this.wtSmallResidentialsDist) {
+            // distance == 2
+            this.numResidentialsTooCloseWithGoodwill += 1;
+          } else {
+            // distance < 2
+            this.numResidentialsTooClose += 1;
+          }
+        } else {
+          this.numResidentialsTooClose += 1;
+        }
       }
     });
     this.proximitiesBigResidential.forEach((distance) => {
       if (distance <= this.wtBigResidentialsDist) {
-        this.numResidentialsTooClose += 1;
+        // distance <= 3
+        if (this.wtBigResidentialsDist > 1) {
+          if (distance == this.wtBigResidentialsDist) {
+            // distance == 3
+            this.numResidentialsTooCloseWithGoodwill += 1;
+          } else {
+            // distance < 3
+            this.numResidentialsTooClose += 1;
+          }
+        } else {
+          this.numResidentialsTooClose += 1;
+        }
       }
     });
 
@@ -204,6 +256,16 @@ class WindTurbinesData extends DataSource {
     ) {
       this.numWindTurbinesTooClose = true;
     }
+    // 5 := best; 3 := neutral; 1 := worst; 0 := neutral
+    this.distancesIndex =
+      5 -
+      this.numResidentialsTooCloseWithGoodwill -
+      this.numWaterRoadsTooCloseWithGoodwill -
+      (this.numWindTurbinesTooClose == true ? 4 : 0);
+    // In case the index value falls below 1, it has to be corrected to 1 because 0 is neutral, 1 ist worst
+    this.distancesIndex = this.distancesIndex <= 0 ? 1 : this.distancesIndex;
+
+    this.turbinesIndex = 2;
   }
 
   getGoals() {
