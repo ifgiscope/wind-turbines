@@ -212,7 +212,6 @@ class WindTurbinesData extends DataSource {
           this.numWaterRoadsTooClose += 1;
         }
       }
-      counter += 1;
     });
 
     this.proximitiesSmallResidential.forEach((distance) => {
