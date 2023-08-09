@@ -1,4 +1,4 @@
-const EventEmitter = require('events');
+const EventEmitter = require("events");
 
 class DataManager {
   constructor(userOptions = {}) {
@@ -20,14 +20,18 @@ class DataManager {
    */
   registerSource(dataSource) {
     if (this.sources.includes(dataSource)) {
-      throw new Error(`Source ${dataSource.constructor.name} already registered.`);
+      throw new Error(
+        `Source ${dataSource.constructor.name} already registered.`
+      );
     }
     this.sources.push(dataSource);
     dataSource.dataManager = this;
 
     Object.entries(dataSource.getVariables()).forEach(([id, callback]) => {
       if (this.variables[id] !== undefined) {
-        throw new Error(`Source ${dataSource.constructor.name} registering already registered variable ${id}.`);
+        throw new Error(
+          `Source ${dataSource.constructor.name} registering already registered variable ${id}.`
+        );
       }
       this.variables[id] = callback;
     });
@@ -69,15 +73,21 @@ class DataManager {
     this.sources.forEach((source) => {
       source.calculate();
     });
-    this.events.emit('update');
+    this.events.emit("update");
   }
 
   getGoals() {
-    return this.sources.reduce((acc, source) => acc.concat(source.getGoals()), []);
+    return this.sources.reduce(
+      (acc, source) => acc.concat(source.getGoals()),
+      []
+    );
   }
 
   getModifiers(id) {
-    return this.dataModifiers.reduce((acc, modifier) => acc.concat(modifier.getModifiers(id)), []);
+    return this.dataModifiers.reduce(
+      (acc, modifier) => acc.concat(modifier.getModifiers(id)),
+      []
+    );
   }
 }
 
