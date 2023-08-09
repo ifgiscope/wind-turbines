@@ -1,6 +1,16 @@
-# future-mobility
+# ifgi scope
 
-An exhibit about the Future of Mobility.
+A collaborative and interactive wind farm simulator. This project was done during the summer semester 2023 at ifgi.
+
+This project is based on the existing [future mobility project from Imaginary ]([url](https://github.com/IMAGINARY/future-mobility)) and adapted it towards the aim of this project.
+It consists of multiple components, which will be explained in the following.
+
+## Website
+The website allows users to arrange a 16x16 grid with certain areas. These areas include green spaces as water areas and parks, infrastructure as roads and residentials and windturbines of two different sizes. The initial layout is all parks as you can see in the following image:
+![image](https://github.com/ifgiscope/wind-turbines/assets/46593824/638e8b53-d139-422c-9714-a5f697f3036d)
+
+With the buttons on the right the user can select an area type and then change tiles by clicking on them. Right to the grid are smiley that display how satisfied certain conditions are, the amount of green spaces, the amount of wind turbines and the distances towards one another. Below the smileys are acteurs displayed, that tell, when some conditions are are the case. They tell the user what is missing in the current layout. Examples for this are ...
+
 
 ## Compilation
 
