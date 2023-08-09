@@ -1,7 +1,7 @@
 goals:
   green-spaces:
     # Number of green spaces a city should have (at least)
-    num: 20
+    num: 50
     # Minimum number of tiles a green space needs to have to qualify as "large"
     large-spaces-threshold: 3
     # Total area of large green spaces a city should have (at least)
@@ -17,10 +17,10 @@ goals:
     windTurbineSmall-distance-residentials: 2
     windTurbineBig-distance-water-roads: 2
     windTurbineBig-distance-residentials: 3
-  energy:
-    max-energy-level: 1
-    high-energy-level: 0.5
-    med-energy-level: 0.25
+  #energy:
+  #  max-energy-level: 1
+  #  high-energy-level: 0.5
+  #  med-energy-level: 0.25
   zone-balance:
     # Percentage of zoned areas that should (ideally) be residential
     ideal-residential-percentage: 0.3

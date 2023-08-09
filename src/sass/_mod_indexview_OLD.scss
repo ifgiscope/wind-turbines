@@ -142,14 +142,23 @@ $index-value-icon-face-py: (
     }
   }
 
-  .index-green-spaces .description {
-    background-image: url("../../static/icons/green-spaces.svg");
+  .index-traffic-density .description {
+    background-image: url("../../static/icons/traffic-density.svg");
   }
 
-  .index-wind-turbines .description {
-    background-image: url("../../static/icons/wind-turbines.svg");
+  .index-travel-times .description {
+    background-image: url("../../static/icons/travel-times.svg");
   }
-  .index-distances .description {
-    background-image: url("../../static/icons/heights.svg");
+
+  .index-safety .description {
+    background-image: url("../../static/icons/safety.svg");
+  }
+
+  .index-pollution .description {
+    background-image: url("../../static/icons/pollution.svg");
+  }
+
+  .index-noise .description {
+    background-image: url("../../static/icons/noise.svg");
   }
 }

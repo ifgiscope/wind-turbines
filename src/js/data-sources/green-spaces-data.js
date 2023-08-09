@@ -118,6 +118,10 @@ class GreenSpacesData extends DataSource {
       this.numNearProximity >= this.proximityThreshold
         ? 1
         : 0);
+    // ----------------------------------------------------------------------
+    //console.log("num green spaces", this.numGreenSpaces);
+    //console.log("index", this.index);
+    // ----------------------------------------------------------------------
   }
 
   getGoals() {
