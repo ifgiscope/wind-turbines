@@ -29,7 +29,7 @@ fetch(`${process.env.SERVER_HTTP_URI}/config`, { cache: "no-store" })
   .then((config) => {
     const connector = new ServerSocketConnector(process.env.SERVER_SOCKET_URI);
 
-    const citizenRequestView = new CitizenRequestView(config);
+    const citizenRequestView = new CitizenRequestView();
     $("#col-1")
       .append(createTitle(config.dashboard.goals.title))
       .append(citizenRequestView.$element);

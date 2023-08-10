@@ -17,7 +17,7 @@ class TravelTimesData extends DataSource {
     //this.industrialId = getTileTypeId(this.config, "industrial");
 
     this.longTravelTime =
-      this.config.goals["travel-times"]["travel-time-long"] || 27;
+      this..goals["travel-times"]["travel-time-long"] || 27;
     this.levels = this.config.goals["travel-times"]["travel-time-levels"] || [
       0.75, 0.55, 0.4, 0.25,
     ];

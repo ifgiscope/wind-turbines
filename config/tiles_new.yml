@@ -37,7 +37,7 @@ tileTypes:
     type: windTurbineBig
     name: Wind Turbine Big
     # light grey
-    color: "#cfd1cf"
+    color: "#cfd1ce"
     editorIcon: ""
     # 2D/3D
     distance_WEA_m_factor_height_prevailing: 3.0
