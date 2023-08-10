@@ -9,7 +9,13 @@ It consists of multiple components, which will be explained in the following.
 The website allows users to arrange a 16x16 grid with certain areas. These areas include green spaces as water areas and parks, infrastructure as roads and residentials and windturbines of two different sizes. The initial layout is all parks as you can see in the following image:
 ![image](https://github.com/ifgiscope/wind-turbines/assets/46593824/638e8b53-d139-422c-9714-a5f697f3036d)
 
-With the buttons on the right the user can select an area type and then change tiles by clicking on them. Right to the grid are smiley that display how satisfied certain conditions are, the amount of green spaces, the amount of wind turbines and the distances towards one another. Below the smileys are acteurs displayed, that tell, when some conditions are are the case. They tell the user what is missing in the current layout. Examples for this are ...
+With the buttons on the right the user can select an area type and then change tiles by clicking on them. Right to the grid are smileys that display how satisfied certain conditions are, the amount of green spaces, the amount of wind turbines and the distances towards one another. 
+![image](https://github.com/ifgiscope/wind-turbines/assets/46593824/a94634a1-71ac-4406-a474-74ff8e88c408)
+
+Below the smileys are acteurs displayed, that tell, when some conditions are true. They tell the user what is missing in the current layout. On example for this are citizens that say there is not enoug elecrticity. Therefore, there needs to be build more wind turbines. 
+![image](https://github.com/ifgiscope/wind-turbines/assets/46593824/6039f364-5388-416a-9d72-7594a5a0a240)
+
+Together with all these options, the user has the goal, to build the best possible layout to fulfill all goals and leave averyone involved satisfied.
 
 
 ## Compilation
