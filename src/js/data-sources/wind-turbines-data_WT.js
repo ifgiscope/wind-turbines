@@ -103,7 +103,6 @@ class WindTurbinesData extends DataSource {
       residentialId,
     ]);
 
-    // COULD BE REMOVED
     const distancesWindTurbines = allDistancesToTileType(this.city.map, [
       windTurbineSmallId,
       windTurbineBigId,
