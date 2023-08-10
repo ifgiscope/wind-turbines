@@ -6,7 +6,6 @@ function getTileTypeId(config, type) {
 }
 
 function getTileType(config, type) {
-  console.log(typeof config);
   const entry = Object.entries(config.tileTypes).find(
     ([, props]) => props.type === type
   );
