@@ -61,7 +61,7 @@ cfgLoader
     stats.registerSource(new ZoneBalanceData(city, config));
     stats.registerSource(new GreenSpacesData(city, config));
     stats.registerSource(new WindTurbinesData(city, config));
-    stats.calculateAll(); // Calculation gets done here once, because the citys default state is no longer only empty cells, but park cells. Therefore the tile count must be calculated here too, default 0 is no longer correct
+    stats.calculateAll(); // Calculation gets done here once, because the cities default state is no longer only empty cells, but park cells. Therefore the tile count must be calculated here too, default 0 is no longer correct
     city.map.events.on("update", () => {
       stats.calculateAll();
     });

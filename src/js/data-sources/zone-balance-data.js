@@ -7,7 +7,7 @@ class ZoneBalanceData extends DataSource {
     this.city = city;
     this.config = config;
 
-    this.turbinesIndex = 1; // Default is unhappy
+    this.turbinesIndex = 5; // Default is happy
 
     this.tileTypeIds = {
       residential: getTileTypeId(this.config, "residential"),
@@ -96,10 +96,9 @@ class ZoneBalanceData extends DataSource {
             (this.amount.windTurbineSmall + this.amount.windTurbineBig * 2)
           )
         : 0;
-
-    const perfectEnergy =
+    /*const perfectEnergy =
       this.amount.windTurbineSmall + this.amount.windTurbineBig * 2 ==
-      this.amount.residential;
+      this.amount.residential;*/
 
     // energy == 0 -> 5
     // energy == -1 -> 3

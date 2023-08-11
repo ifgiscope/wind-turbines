@@ -243,6 +243,7 @@ cfgLoader
         const variableRankListView = new VariableRankListView(config.variables);
         // Todo: Remove the lines below
         $('[data-component="status"]').append(variableRankListView.$element);
+
         variableRankListView.setValues({
           //"traffic-density": 0,
           //"travel-times": 0,
