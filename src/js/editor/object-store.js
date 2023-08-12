@@ -10,48 +10,51 @@ class ObjectStore {
   }
 
   async loadFixedObjects(path) {
-    fetch(path, { cache: 'no-store' })
-      .then(response => response.json())
+    fetch(path, { cache: "no-store" })
+      .then((response) => response.json())
       .then((data) => {
         this.fixedObjects = data.cities;
       });
   }
 
   loadUserObjects() {
-    const userObjects = JSON.parse(localStorage.getItem('futureMobility.cityStore.cities'));
+    const userObjects = JSON.parse(
+      localStorage.getItem("winTurbines.cityStore.cities")
+    );
     if (userObjects) {
       this.userObjects = userObjects;
     }
   }
 
   saveLocal() {
-    localStorage.setItem('futureMobility.cityStore.cities', JSON.stringify(this.userObjects));
+    localStorage.setItem(
+      "winTurbines.cityStore.cities",
+      JSON.stringify(this.userObjects)
+    );
   }
 
   getAllObjects() {
     return Object.assign(
       {},
       this.getAllUserObjects(),
-      this.getAllFixedObjects(),
+      this.getAllFixedObjects()
     );
   }
 
   getAllFixedObjects() {
-    return Object.fromEntries(this.fixedObjects.map((obj, i) => [
-      `F${i}`,
-      obj,
-    ]));
+    return Object.fromEntries(
+      this.fixedObjects.map((obj, i) => [`F${i}`, obj])
+    );
   }
 
   getAllUserObjects() {
-    return Object.fromEntries(this.userObjects.map((obj, i) => [
-      `L${i}`,
-      obj,
-    ]).reverse());
+    return Object.fromEntries(
+      this.userObjects.map((obj, i) => [`L${i}`, obj]).reverse()
+    );
   }
 
   get(id) {
-    if (id[0] === 'F') {
+    if (id[0] === "F") {
       return this.fixedObjects[id.substr(1)];
     }
     return this.userObjects[id.substr(1)];
