@@ -7,7 +7,8 @@ It consists of multiple components, which will be explained in the following.
 
 ## Website
 The website allows users to arrange a 16x16 grid with certain areas. These areas include green spaces as water areas and parks, infrastructure as roads and residentials and windturbines of two different sizes. The initial layout is all parks as you can see in the following image:
-![image](https://github.com/ifgiscope/wind-turbines/assets/46593824/638e8b53-d139-422c-9714-a5f697f3036d)
+<img width="1145" alt="Bildschirmfoto 2023-08-12 um 19 41 54" src="https://github.com/ifgiscope/wind-turbines/assets/61976072/7bf2aa67-74f1-4ab0-b20c-b83af037b83d">
+
 
 With the buttons on the right the user can select an area type and then change tiles by clicking on them. Right to the grid are smileys that display how satisfied certain conditions are, the amount of green spaces, the amount of wind turbines and the distances towards one another. 
 ![image](https://github.com/ifgiscope/wind-turbines/assets/46593824/a94634a1-71ac-4406-a474-74ff8e88c408)
