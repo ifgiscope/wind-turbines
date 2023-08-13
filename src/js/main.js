@@ -114,7 +114,7 @@ cfgLoader
 
         $("[data-component=counters]").append([
           counterView.$element,
-          zoneBalanceView.$element,
+          //zoneBalanceView.$element,
         ]);
 
         const dataInspectorView = new DataInspectorView();
