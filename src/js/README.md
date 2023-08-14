@@ -45,6 +45,10 @@ cities.json contains two different example scenarios that can be loaded by an ac
 
 ## Remaining files in the js folder
 
+This folder contains several files. They are all taken from the original project and partly modified for our use case. Those files contain a matching file with the postfix \_OLD.
+
+The main[-...].js files are getting used to fill the html pages in src/html. The already got a structure and contain several containers, but these have to be filles by these files.
+
 ## Miscellaneous
 
 Part that are commented out because they are part of the olf project and for this use case no longer required. We kept them in case something will be needed in the future.
