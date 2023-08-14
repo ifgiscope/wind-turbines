@@ -9,6 +9,8 @@ class WindTurbinesData extends DataSource {
     this.city = city;
     this.config = config;
 
+    // This arrays will contain a 16 x 16 raster of the distance values from any raster cell to
+    // and other data types (water, road, residential area, wind turbines small and big).
     this.proximitiesSmallWaterRoad = [];
     this.proximitiesBigWaterRoad = [];
     this.proximitiesSmallResidential = [];
@@ -16,6 +18,7 @@ class WindTurbinesData extends DataSource {
     this.proximitiesSmallWindTurbines = [];
     this.proximitiesBigWindTurbines = [];
 
+    // The following variable will contain the distances that have to be kept and are written down in config/goals.yml
     this.wtSmallWaterRoadsDist =
       this.config.goals["distances"]["windTurbineSmall-distance-water-roads"] ||
       1;
@@ -31,6 +34,7 @@ class WindTurbinesData extends DataSource {
       this.config.goals["distances"]["windTurbineBig-distance-residentials"] ||
       3;
 
+    // The following values are counters, that are initially set to 0
     this.numWaterRoadsTooClose = 0;
     this.numWaterRoadsTooCloseWithGoodwill = 0;
     this.numResidentialsTooClose = 0;
@@ -41,6 +45,8 @@ class WindTurbinesData extends DataSource {
     this.amountOfBigWindTurbines = 0;
     this.amountOfWindTurbines = 0;
 
+    // This index will be used e.g. for choosing the correct smiley and citizen requests.
+    // 5 is the default value, it says "happy"
     this.distancesIndex = 5;
   }
 
