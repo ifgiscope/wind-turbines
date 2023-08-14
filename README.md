@@ -61,6 +61,11 @@ You can use [Swagger Editor](https://editor.swagger.io/) and the
 [AsyncAPI Playground](https://playground.asyncapi.io/) to format the respective specifications in
 a friendly format.
 
+## References
+
+Some icons are used from [Flaticon]([url](https://www.flaticon.com/)). 
+
+
 ## License
 
 Copyright (c) 2021 IMAGINARY gGmbH
