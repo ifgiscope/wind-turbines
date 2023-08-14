@@ -177,10 +177,10 @@ cfgLoader
         });*/
 
         const counterView = new TileCounterView(stats, config);
-        const zoneBalanceView = new ZoneBalanceView(stats, config);
+        //const zoneBalanceView = new ZoneBalanceView(stats, config);
         $("[data-component=counters]").append([
           counterView.$element,
-          zoneBalanceView.$element,
+          //zoneBalanceView.$element,
         ]);
 
         const dataInspectorView = new DataInspectorView();
