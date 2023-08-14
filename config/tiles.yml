@@ -1,5 +1,4 @@
 tileTypes:
-  #5:
   0:
     type: park
     name: Park
@@ -26,18 +25,10 @@ tileTypes:
   4:
     type: windTurbineSmall
     name: Wind Turbine Small
-    # light grey
     color: "#cfd1c1"
     editorIcon: "static/fa/wind-power-small.svg"
-    # 2D/3D
-    #distance_WEA_m_factor_height_prevailing: 3.0
-    #distance_WEA_m_factor_height_NOT_prevailing: 2.0
   5:
     type: windTurbineBig
     name: Wind Turbine Big
-    # light grey
     color: "#cfd1c2"
     editorIcon: "static/fa/wind-power-big.svg"
-    # 2D/3D
-    #distance_WEA_m_factor_height_prevailing: 3.0
-    #distance_WEA_m_factor_height_NOT_prevailing: 2.0

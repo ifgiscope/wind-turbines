@@ -13,23 +13,19 @@ goals:
     # Percentage of residential areas that need to be closer than the threshold (as fraction, 1 = 100%).
     proximity-goal-percentage: 0.75
   distances:
+    # Distance between small wind turbines and water and road has to be at least 1 tile
     windTurbineSmall-distance-water-roads: 1
+    # Distance between small wind turbines and residential area has to be at least 2 tile
     windTurbineSmall-distance-residentials: 2
+    # Distance between big wind turbines and water and road has to be at least 2 tile
     windTurbineBig-distance-water-roads: 2
+    # Distance between big wind turbines and residential area has to be at least 3 tile
     windTurbineBig-distance-residentials: 3
-  #energy:
-  #  max-energy-level: 1
-  #  high-energy-level: 0.5
-  #  med-energy-level: 0.25
   zone-balance:
     # Percentage of zoned areas that should (ideally) be residential
     ideal-residential-percentage: 0.3
     # Percentage of zoned areas that should (ideally) be residential
     ideal-windTurbine-percentage: 0.25
-    # Percentage of zoned areas that should (ideally) be commercial
-    #ideal-commercial-percentage: 0.25
-    # Percentage of zoned areas that should (ideally) be industrial
-    #ideal-industrial-percentage: 0.25
     # Minimum percentage of tiles that should be zoned areas
     underdeveloped-percentage: 0.35
     # Maximum percentage of tiles that should be zoned areas
