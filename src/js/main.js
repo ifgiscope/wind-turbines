@@ -10,7 +10,7 @@ const TestScenarios = require("./test/scenarios");
 const showFatalError = require("./lib/show-fatal-error");
 require("../sass/default.scss");
 require("../sass/desktop.scss");
-const ZoneBalanceView = require("./zone-balance-view");
+//const ZoneBalanceView = require("./zone-balance-view");
 const DataInspectorView = require("./data-inspector-view");
 const VariableRankListView = require("./index-list-view");
 //const PollutionData = require("./data-sources/pollution-data");
@@ -110,11 +110,11 @@ cfgLoader
         }
 
         const counterView = new TileCounterView(stats, config);
-        const zoneBalanceView = new ZoneBalanceView(stats, config);
+        //const zoneBalanceView = new ZoneBalanceView(stats, config);
 
         $("[data-component=counters]").append([
           counterView.$element,
-          zoneBalanceView.$element,
+          //zoneBalanceView.$element,
         ]);
 
         const dataInspectorView = new DataInspectorView();
