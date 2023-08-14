@@ -230,6 +230,10 @@ class WindTurbinesData extends DataSource {
       }
     });
     this.proximitiesBigResidential.forEach((distance) => {
+      // In case the amount of big wind turbines that are closer or equal to a fixed value (3)
+      // is bigger than than, it will be differentiated, if it is equal or higher than the same
+      // fixed value (3).
+      // If it is equal, it will counted as only one violation which will be counted as "acceptable with goodwill".
       if (distance <= this.wtBigResidentialsDist) {
         // distance <= 3
         if (this.wtBigResidentialsDist > 1) {
@@ -271,7 +275,7 @@ class WindTurbinesData extends DataSource {
         id: "wind-turbine-distance-road-water-low",
         category: "distance",
         priority: 1,
-        condition: this.numWaterRoadsTooClose == 0, //this.stats.get("zones-"),
+        condition: this.numWaterRoadsTooClose == 0,
         progress: this.goalProgress(this.numWaterRoadsTooClose, 0),
       },
       {
