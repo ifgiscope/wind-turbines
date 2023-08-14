@@ -21,6 +21,7 @@ goals:
     windTurbineBig-distance-water-roads: 2
     # Distance between big wind turbines and residential area has to be at least 3 tile
     windTurbineBig-distance-residentials: 3
+  # This is currently not embedded!!
   zone-balance:
     # Percentage of zoned areas that should (ideally) be residential
     ideal-residential-percentage: 0.3
