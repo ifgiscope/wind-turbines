@@ -13,9 +13,9 @@ dataManager:
   throttleTime: 1000
 variableMapOverlay:
   # Colors used for showing variables (with alpha 0.9 for max pollution)
-  colors:
-    pollution: 0xa41a00
-    noise: 0x4001ff
+  #colors:
+  #pollution: 0xa41a00
+  #noise: 0x4001ff
   # Duration (in seconds) of the fade-in or out transition
   transitionDuration: 1
   # Amount of time (in seconds) that the overlay is shown for (not counting transitions)
