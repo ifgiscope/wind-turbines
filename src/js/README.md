@@ -45,10 +45,12 @@ cities.json contains two different example scenarios that can be loaded by an ac
 
 ## Remaining files in the js folder
 
-This folder contains several files. They are all taken from the original project and partly modified for our use case. Those files contain a matching file with the postfix \_OLD.
+This folder contains several files. They are all taken from the original project and partly modified for our use case. Those files contain a matching file with the postfix **\_OLD**.
 
-The main[-...].js files are getting used to fill the html pages in src/html. They already got a structure and contain several containers, but these have to be filled by these files.
+The **main[-...].js** files are getting used to fill the html pages in src/html. They already got a structure and contain several containers, but these have to be filled by these files.
 
 ## Miscellaneous
 
 Code snippets that are commented out are part of the old project and for this use case no longer required. We kept them in case something will be needed in the future.
+
+Files that have the word **-view-** as part of their name, are components that are standalone or in combination with other component elements of the html page.
