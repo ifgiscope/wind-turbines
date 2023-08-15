@@ -1,4 +1,4 @@
-class PowerUpViewMgr {
+/*class PowerUpViewMgr {
   constructor() {
     this.activePowerUps = [];
     this.handlers = [];
@@ -59,3 +59,4 @@ class PowerUpViewMgr {
 }
 
 module.exports = PowerUpViewMgr;
+*/

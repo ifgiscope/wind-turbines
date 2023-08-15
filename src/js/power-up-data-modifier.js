@@ -1,5 +1,5 @@
 /* eslint-disable no-underscore-dangle */
-class PowerUpDataModifier {
+/*class PowerUpDataModifier {
   constructor(config, powerUpManager) {
     this.config = config;
     this.manager = powerUpManager;
@@ -36,3 +36,4 @@ class PowerUpDataModifier {
 }
 
 module.exports = PowerUpDataModifier;
+*/

@@ -1,3 +1,4 @@
+// This is the element  for displaying the citizen requests
 class CitizenRequestViewMgr {
   constructor(citizenRequestView) {
     //, requestCount = 2) { // This is a value more limiting the
