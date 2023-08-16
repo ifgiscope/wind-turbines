@@ -1,3 +1,9 @@
+This post request is an example for a request for changing the cell values of the city. After starting the frontend with 
+
+```npm run build``` and ```http-server -c-1``` and the server with ```npm run start```
+
+it can be entered in another terminal to change the city.html view.
+
 curl -v -X POST http://localhost:4848/city/map -H 'Content-Type: application/json' -H "Accept: application/json" -H "Content-Type: application/json" -d "{\"cells\":[
     [0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars,class-methods-use-this */
 
-class PowerUpViewHandler {
+/*class PowerUpViewHandler {
   onEnable(powerUp, activePowerUps) {
 
   }
@@ -15,3 +15,4 @@ class PowerUpViewHandler {
 }
 
 module.exports = PowerUpViewHandler;
+*/

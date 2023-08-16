@@ -9,6 +9,8 @@ class WindTurbinesData extends DataSource {
     this.city = city;
     this.config = config;
 
+    // This arrays will contain a 16 x 16 raster of the distance values from any raster cell to
+    // and other data types (water, road, residential area, wind turbines small and big).
     this.proximitiesSmallWaterRoad = [];
     this.proximitiesBigWaterRoad = [];
     this.proximitiesSmallResidential = [];
@@ -16,6 +18,7 @@ class WindTurbinesData extends DataSource {
     this.proximitiesSmallWindTurbines = [];
     this.proximitiesBigWindTurbines = [];
 
+    // The following variable will contain the distances that have to be kept and are written down in config/goals.yml
     this.wtSmallWaterRoadsDist =
       this.config.goals["distances"]["windTurbineSmall-distance-water-roads"] ||
       1;
@@ -31,6 +34,7 @@ class WindTurbinesData extends DataSource {
       this.config.goals["distances"]["windTurbineBig-distance-residentials"] ||
       3;
 
+    // The following values are counters, that are initially set to 0
     this.numWaterRoadsTooClose = 0;
     this.numWaterRoadsTooCloseWithGoodwill = 0;
     this.numResidentialsTooClose = 0;
@@ -41,9 +45,15 @@ class WindTurbinesData extends DataSource {
     this.amountOfBigWindTurbines = 0;
     this.amountOfWindTurbines = 0;
 
+    // This index will be used e.g. for choosing the correct smiley and citizen requests
+    // for distance constraints. 5 is the default value, it says "happy"
     this.distancesIndex = 5;
   }
 
+  /**
+   * Getter for the distance index.
+   * return: Distance index variable
+   */
   getVariables() {
     return {
       "distances-index": () => this.distancesIndex,
@@ -51,6 +61,7 @@ class WindTurbinesData extends DataSource {
   }
 
   /**
+   * This function checks the distance values of a distances 2D array in a given window.
    * distancesArray: array with shape a x b, containing distances from object to others
    * x: integer value representing the x position
    * y: integer value representing the y position
@@ -87,6 +98,9 @@ class WindTurbinesData extends DataSource {
     }
   }
 
+  /**
+   * This function gets used to fill the proximity arrays.
+   */
   calculateProximities() {
     const residentialId = getTileTypeId(this.config, "residential");
     const waterTileId = getTileTypeId(this.config, "water");
@@ -94,6 +108,7 @@ class WindTurbinesData extends DataSource {
     const windTurbineSmallId = getTileTypeId(this.config, "windTurbineSmall");
     const windTurbineBigId = getTileTypeId(this.config, "windTurbineBig");
 
+    // The following lines will build the distances arrays:
     const distancesWaterRoad = allDistancesToTileType(this.city.map, [
       waterTileId,
       roadTileId,
@@ -165,11 +180,13 @@ class WindTurbinesData extends DataSource {
     });
   }
 
+  // Just a call for the calculation done by other functions.
   calculate() {
     this.calculateProximities();
     this.calculateIndex();
   }
 
+  //
   calculateIndex() {
     this.numResidentialsTooCloseWithGoodwill = 0;
     this.numResidentialsTooClose = 0;
@@ -269,6 +286,10 @@ class WindTurbinesData extends DataSource {
     this.distancesIndex = this.distancesIndex <= 0 ? 1 : this.distancesIndex;
   }
 
+  /**
+   * This function contains the different goals and its conditions that will be checked and use the previous calculations as a basis.
+   * @returns goals thats condition is false
+   */
   getGoals() {
     return [
       {

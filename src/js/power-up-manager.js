@@ -1,4 +1,4 @@
-const EventEmitter = require('events');
+/*const EventEmitter = require('events');
 
 class PowerUpManager {
   constructor(config) {
@@ -39,3 +39,4 @@ class PowerUpManager {
 }
 
 module.exports = PowerUpManager;
+*/

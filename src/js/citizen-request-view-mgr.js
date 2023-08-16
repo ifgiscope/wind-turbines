@@ -1,8 +1,9 @@
+// This is the element  for displaying the citizen requests
 class CitizenRequestViewMgr {
   constructor(citizenRequestView) {
     //, requestCount = 2) { // This is a value more limiting the
     this.view = citizenRequestView;
-    this.requestCount = requestCount; // This is a value more limiting the
+    //this.requestCount = requestCount; // This is a value more limiting the
     this.config = this.view.config;
     this.groups = this.getGroups();
 
