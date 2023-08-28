@@ -13,11 +13,11 @@ goals:
     # Percentage of residential areas that need to be closer than the threshold (as fraction, 1 = 100%).
     proximity-goal-percentage: 0.75
   distances:
-    # Distance between small wind turbines and water and road has to be at least 1 tile
+    # Distance between small wind turbines and water, road and other wind turbines has to be at least 1 tile
     windTurbineSmall-distance-water-roads: 1
     # Distance between small wind turbines and residential area has to be at least 2 tile
     windTurbineSmall-distance-residentials: 2
-    # Distance between big wind turbines and water and road has to be at least 2 tile
+    # Distance between big wind turbines and water, road and other wind turbines has to be at least 2 tile
     windTurbineBig-distance-water-roads: 2
     # Distance between big wind turbines and residential area has to be at least 3 tile
     windTurbineBig-distance-residentials: 3
